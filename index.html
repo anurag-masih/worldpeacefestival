@@ -1,1 +1,4232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <meta
+    name="description"
+    content="World Peace Festival 2026 — Registration"
+  />
+
+  <meta name="theme-color" content="#7c1834" />
+
+  <title>World Peace Festival 2026 | Registration</title>
+
+  <!-- =========================================================
+       GOOGLE FONTS
+       ========================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mukta:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      font-family:
+        Inter,
+        "Poppins",
+        "Noto Sans Devanagari",
+        "Mukta",
+        sans-serif;
+
+      color: #35202a;
+
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(255, 235, 184, 0.95),
+          transparent 32%
+        ),
+        linear-gradient(
+          180deg,
+          #fffaf0 0%,
+          #fff5e9 45%,
+          #f9e7df 100%
+        );
+    }
+
+    body,
+    input,
+    select,
+    textarea,
+    button {
+      font-family:
+        Inter,
+        "Poppins",
+        "Noto Sans Devanagari",
+        "Mukta",
+        sans-serif;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-size: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hindi {
+      font-family:
+        "Noto Sans Devanagari",
+        "Mukta",
+        sans-serif;
+    }
+
+    /* =========================================================
+       HEAVENLY BACKGROUND
+       ========================================================= */
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sun {
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      top: -220px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 244, 198, 0.95) 0%,
+          rgba(255, 218, 135, 0.55) 28%,
+          rgba(255, 218, 135, 0.12) 60%,
+          transparent 72%
+        );
+
+      filter: blur(4px);
+
+      animation: breathe 7s ease-in-out infinite;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(3px);
+      opacity: 0.5;
+    }
+
+    .orb.one {
+      width: 260px;
+      height: 260px;
+      left: -100px;
+      top: 15%;
+      background: rgba(214, 164, 174, 0.2);
+      animation: floatOne 12s ease-in-out infinite;
+    }
+
+    .orb.two {
+      width: 340px;
+      height: 340px;
+      right: -130px;
+      top: 40%;
+      background: rgba(255, 210, 137, 0.2);
+      animation: floatTwo 15s ease-in-out infinite;
+    }
+
+    .orb.three {
+      width: 220px;
+      height: 220px;
+      left: 25%;
+      bottom: -100px;
+      background: rgba(153, 105, 122, 0.12);
+      animation: floatThree 13s ease-in-out infinite;
+    }
+
+    .cloud {
+      position: absolute;
+      width: 240px;
+      height: 70px;
+      border-radius: 100px;
+
+      background: rgba(255, 255, 255, 0.55);
+      filter: blur(12px);
+
+      opacity: 0.35;
+    }
+
+    .cloud::before,
+    .cloud::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .cloud::before {
+      width: 100px;
+      height: 100px;
+      left: 35px;
+      bottom: 10px;
+    }
+
+    .cloud::after {
+      width: 130px;
+      height: 130px;
+      right: 25px;
+      bottom: 4px;
+    }
+
+    .cloud.one {
+      top: 20%;
+      left: -100px;
+      animation: cloudMove 30s linear infinite;
+    }
+
+    .cloud.two {
+      top: 52%;
+      right: -300px;
+      transform: scale(0.8);
+      animation: cloudMoveReverse 38s linear infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+      }
+
+      50% {
+        transform: translateX(-50%) scale(1.08);
+      }
+    }
+
+    @keyframes floatOne {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(30px, -40px);
+      }
+    }
+
+    @keyframes floatTwo {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-40px, 30px);
+      }
+    }
+
+    @keyframes floatThree {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(30px, -25px);
+      }
+    }
+
+    @keyframes cloudMove {
+      from {
+        transform: translateX(-20px);
+      }
+
+      to {
+        transform: translateX(calc(100vw + 300px));
+      }
+    }
+
+    @keyframes cloudMoveReverse {
+      from {
+        transform: translateX(20px);
+      }
+
+      to {
+        transform: translateX(calc(-100vw - 400px));
+      }
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      width: 100%;
+
+      background: rgba(255, 250, 244, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(124, 24, 52, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+
+      padding:
+        14px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      text-decoration: none;
+      font-weight: 800;
+      color: #751630;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          145deg,
+          #9d3655,
+          #68152f
+        );
+
+      color: white;
+
+      box-shadow:
+        0 8px 20px rgba(108, 23, 48, 0.22);
+    }
+
+    .brand-text {
+      line-height: 1.05;
+      font-size: 13px;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      margin-top: 3px;
+      opacity: 0.65;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 9px 13px;
+      border-radius: 999px;
+
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(124, 24, 52, 0.07);
+      transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       MAIN
+       ========================================================= */
+
+    main {
+      width: 100%;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      padding:
+        70px 0 45px;
+
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(124, 24, 52, 0.09);
+
+      color: #7c1834;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 30px rgba(124, 24, 52, 0.06);
+
+      animation: riseIn 0.8s ease both;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+
+      font-family:
+        Poppins,
+        Inter,
+        sans-serif;
+
+      font-size:
+        clamp(36px, 7vw, 72px);
+
+      line-height: 1.02;
+
+      letter-spacing: -0.045em;
+
+      color: #70162f;
+
+      animation: riseIn 0.8s 0.1s ease both;
+    }
+
+    .hero-hindi {
+      margin-top: 13px;
+
+      font-size:
+        clamp(25px, 4vw, 42px);
+
+      line-height: 1.2;
+
+      font-weight: 700;
+
+      color: #8d3450;
+
+      animation: riseIn 0.8s 0.18s ease both;
+    }
+
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 20px auto 0;
+
+      color: #674b55;
+
+      font-size:
+        clamp(15px, 2vw, 18px);
+
+      line-height: 1.7;
+
+      animation: riseIn 0.8s 0.25s ease both;
+    }
+
+    .hero-dates {
+      margin: 28px auto 0;
+
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .date-pill {
+      padding: 11px 17px;
+
+      background: rgba(255, 255, 255, 0.66);
+
+      border: 1px solid rgba(124, 24, 52, 0.1);
+
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 30px rgba(124, 24, 52, 0.05);
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       CARD
+       ========================================================= */
+
+    .glass-card {
+      position: relative;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.84),
+          rgba(255, 249, 243, 0.7)
+        );
+
+      border:
+        1px solid rgba(255, 255, 255, 0.8);
+
+      border-radius: 28px;
+
+      box-shadow:
+        0 30px 70px rgba(91, 32, 48, 0.1),
+        inset 0 1px rgba(255, 255, 255, 0.9);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      overflow: hidden;
+    }
+
+    .section-card {
+      padding: clamp(20px, 4vw, 40px);
+      margin-bottom: 25px;
+    }
+
+    /* =========================================================
+       NOTICE
+       ========================================================= */
+
+    .notice-card {
+      margin-top: 15px;
+    }
+
+    .notice-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .notice-icon {
+      flex: 0 0 auto;
+
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 16px;
+
+      background: rgba(124, 24, 52, 0.09);
+
+      color: #7c1834;
+
+      font-size: 22px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      color: #a16b79;
+    }
+
+    .section-title {
+      margin-top: 4px;
+
+      font-size:
+        clamp(23px, 4vw, 32px);
+
+      line-height: 1.2;
+
+      color: #6f1832;
+    }
+
+    .section-title-hindi {
+      margin-top: 4px;
+
+      color: #98415a;
+
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .deadline {
+      margin-top: 18px;
+
+      padding: 15px 17px;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124, 24, 52, 0.08),
+          rgba(255, 222, 157, 0.2)
+        );
+
+      border: 1px solid rgba(124, 24, 52, 0.08);
+
+      color: #741932;
+
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .notice-list {
+      list-style: none;
+
+      margin-top: 20px;
+
+      display: grid;
+      gap: 11px;
+    }
+
+    .notice-list li {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+
+      line-height: 1.6;
+
+      color: #59434b;
+
+      font-size: 14px;
+    }
+
+    .notice-list li::before {
+      content: "✦";
+
+      flex: 0 0 auto;
+
+      color: #a33a58;
+      font-weight: 800;
+    }
+
+    .notice-hindi {
+      margin-top: 18px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
+      background: rgba(255, 255, 255, 0.5);
+
+      color: #5b3d48;
+
+      line-height: 1.8;
+
+      font-size: 15px;
+    }
+
+    .steps {
+      margin-top: 25px;
+
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+    }
+
+    .step {
+      padding: 17px;
+
+      border-radius: 18px;
+
+      background: rgba(255, 255, 255, 0.55);
+
+      border: 1px solid rgba(124, 24, 52, 0.07);
+    }
+
+    .step-number {
+      width: 29px;
+      height: 29px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #7c1834;
+
+      color: white;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .step strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .step p {
+      margin-top: 5px;
+
+      color: #715963;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       GATE
+       ========================================================= */
+
+    .gate {
+      margin-top: 25px;
+
+      padding: 19px;
+
+      border-radius: 19px;
+
+      background: rgba(124, 24, 52, 0.055);
+
+      border: 1px solid rgba(124, 24, 52, 0.09);
+    }
+
+    .check-line {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+
+      font-size: 13px;
+      line-height: 1.55;
+
+      color: #513b44;
+    }
+
+    .check-line input {
+      margin-top: 3px;
+
+      width: 17px;
+      height: 17px;
+
+      accent-color: #7c1834;
+
+      flex: 0 0 auto;
+    }
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .primary-btn {
+      position: relative;
+
+      width: 100%;
+
+      margin-top: 18px;
+
+      min-height: 54px;
+
+      border: 0;
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #9a3452,
+          #68152f
+        );
+
+      color: white;
+
+      font-weight: 800;
+
+      letter-spacing: 0.01em;
+
+      box-shadow:
+        0 12px 30px rgba(105, 21, 47, 0.24);
+
+      overflow: hidden;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .primary-btn::after {
+      content: "";
+
+      position: absolute;
+
+      width: 80px;
+      height: 180%;
+
+      top: -40%;
+
+      left: -100px;
+
+      transform: rotate(20deg);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.4),
+          transparent
+        );
+
+      animation: shine 4s ease-in-out infinite;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 16px 35px rgba(105, 21, 47, 0.3);
+    }
+
+    .primary-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @keyframes shine {
+      0%, 55% {
+        left: -100px;
+      }
+
+      75%, 100% {
+        left: calc(100% + 100px);
+      }
+    }
+
+    /* =========================================================
+       REGISTRATION
+       ========================================================= */
+
+    #registrationSection {
+      display: none;
+    }
+
+    .form-section {
+      margin-top: 25px;
+    }
+
+    .form-section:first-child {
+      margin-top: 0;
+    }
+
+    .form-section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+
+      margin-bottom: 18px;
+    }
+
+    .form-section-heading h3 {
+      font-size: 18px;
+      color: #741a34;
+    }
+
+    .form-section-heading span {
+      color: #a16a78;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 15px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #614650;
+    }
+
+    .required {
+      color: #9d294b;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+
+      min-height: 48px;
+
+      padding:
+        11px 13px;
+
+      border:
+        1px solid rgba(105, 55, 69, 0.15);
+
+      border-radius: 13px;
+
+      outline: none;
+
+      background:
+        rgba(255, 255, 255, 0.72);
+
+      color: #38232c;
+
+      transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: rgba(124, 24, 52, 0.5);
+
+      background: white;
+
+      box-shadow:
+        0 0 0 4px rgba(124, 24, 52, 0.07);
+    }
+
+    .input.invalid,
+    .select.invalid {
+      border-color: #c33d58;
+      box-shadow:
+        0 0 0 3px rgba(195, 61, 88, 0.08);
+    }
+
+    .help {
+      color: #957680;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    /* =========================================================
+       PARTICIPANTS
+       ========================================================= */
+
+    .participants {
+      display: grid;
+      gap: 16px;
+    }
+
+    .participant {
+      padding: 20px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.68),
+          rgba(255,247,239,0.54)
+        );
+
+      border: 1px solid rgba(124, 24, 52, 0.09);
+
+      animation: cardIn 0.4s ease both;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.99);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .participant-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      margin-bottom: 17px;
+    }
+
+    .participant-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #711731;
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .participant-number {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(124, 24, 52, 0.1);
+
+      color: #7c1834;
+
+      font-size: 12px;
+    }
+
+    .remove-btn {
+      border: 0;
+      background: transparent;
+
+      color: #a04a63;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      padding: 7px 9px;
+
+      border-radius: 9px;
+    }
+
+    .remove-btn:hover {
+      background: rgba(124, 24, 52, 0.06);
+    }
+
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 110px;
+    }
+
+    .radio-option input {
+      display: none;
+    }
+
+    .radio-option span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-height: 45px;
+
+      padding: 9px 12px;
+
+      border:
+        1px solid rgba(105, 55, 69, 0.13);
+
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.62);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .radio-option input:checked + span {
+      background: rgba(124, 24, 52, 0.09);
+
+      border-color: rgba(124, 24, 52, 0.35);
+
+      color: #711731;
+    }
+
+    .add-participant {
+      width: 100%;
+
+      margin-top: 15px;
+
+      min-height: 49px;
+
+      border-radius: 15px;
+
+      border:
+        1px dashed rgba(124, 24, 52, 0.3);
+
+      background:
+        rgba(255,255,255,0.45);
+
+      color: #741a34;
+
+      font-weight: 800;
+
+      transition: 0.2s ease;
+    }
+
+    .add-participant:hover {
+      background: rgba(124,24,52,0.05);
+    }
+
+    /* =========================================================
+       CONFIRMATION CHECKS
+       ========================================================= */
+
+    .confirmations {
+      display: grid;
+      gap: 11px;
+    }
+
+    .confirmation {
+      padding: 14px 15px;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,0.48);
+
+      border: 1px solid rgba(124,24,52,0.07);
+    }
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    .summary {
+      position: sticky;
+      bottom: 12px;
+      z-index: 50;
+
+      margin-top: 25px;
+
+      padding: 18px;
+
+      border-radius: 21px;
+
+      background:
+        rgba(91, 26, 46, 0.94);
+
+      color: white;
+
+      box-shadow:
+        0 18px 45px rgba(75, 16, 37, 0.25);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      align-items: center;
+    }
+
+    .summary-label {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .summary-value {
+      margin-top: 2px;
+
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .summary-total {
+      text-align: right;
+    }
+
+    .summary-total .summary-value {
+      font-size: 25px;
+    }
+
+    .submit-registration {
+      margin-top: 14px;
+      background: white;
+      color: #721731;
+    }
+
+    .submit-registration:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.16);
+    }
+
+    /* =========================================================
+       PAYMENT
+       ========================================================= */
+
+    #paymentSection {
+      display: none;
+    }
+
+    .payment-id {
+      margin-top: 17px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124,24,52,0.09),
+          rgba(255,218,135,0.15)
+        );
+
+      text-align: center;
+    }
+
+    .payment-id small {
+      display: block;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      color: #956979;
+
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .payment-id strong {
+      display: block;
+
+      margin-top: 6px;
+
+      font-size: 25px;
+      letter-spacing: 0.04em;
+
+      color: #721731;
+    }
+
+    .payment-box {
+      margin-top: 20px;
+
+      padding: 20px;
+
+      border-radius: 20px;
+
+      background: rgba(255,255,255,0.52);
+
+      border:
+        1px solid rgba(124,24,52,0.08);
+    }
+
+    .payment-instructions {
+      line-height: 1.7;
+
+      color: #60434e;
+
+      font-size: 13px;
+    }
+
+    .upi-box {
+      margin-top: 18px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
+      background:
+        rgba(124,24,52,0.06);
+
+      text-align: center;
+    }
+
+    .upi-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: #721731;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+
+      padding: 9px 15px;
+
+      border-radius: 10px;
+
+      border: 1px solid rgba(124,24,52,0.2);
+
+      background: white;
+
+      color: #721731;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .file-input {
+      width: 100%;
+
+      padding: 12px;
+
+      border-radius: 13px;
+
+      border: 1px dashed rgba(124,24,52,0.28);
+
+      background: rgba(255,255,255,0.5);
+
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    .status {
+      display: none;
+
+      margin-top: 17px;
+
+      padding: 15px;
+
+      border-radius: 14px;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    .status.info {
+      background: rgba(80,130,180,0.08);
+      color: #3c6381;
+    }
+
+    .status.success {
+      background: rgba(60,150,95,0.09);
+      color: #2d7048;
+    }
+
+    .status.error {
+      background: rgba(190,50,70,0.08);
+      color: #9a2942;
+    }
+
+    /* =========================================================
+       SUCCESS
+       ========================================================= */
+
+    #successSection {
+      display: none;
+    }
+
+    .success {
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 75px;
+      height: 75px;
+
+      margin: 0 auto 18px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          145deg,
+          #9b3c59,
+          #6f1731
+        );
+
+      color: white;
+
+      font-size: 30px;
+
+      box-shadow:
+        0 15px 35px rgba(111,23,49,0.22);
+
+      animation: successPop 0.6s ease both;
+    }
+
+    @keyframes successPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.4);
+      }
+
+      70% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .success h2 {
+      color: #711731;
+
+      font-size:
+        clamp(26px, 5vw, 38px);
+    }
+
+    .success p {
+      max-width: 650px;
+      margin: 12px auto 0;
+
+      color: #654751;
+
+      line-height: 1.7;
+
+      font-size: 14px;
+    }
+
+    .ids {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+      gap: 10px;
+
+      margin-top: 22px;
+    }
+
+    .id-card {
+      padding: 15px;
+
+      border-radius: 15px;
+
+      background: rgba(124,24,52,0.06);
+    }
+
+    .id-card small {
+      display: block;
+
+      color: #9a7280;
+
+      font-size: 10px;
+    }
+
+    .id-card strong {
+      display: block;
+
+      margin-top: 4px;
+
+      color: #741932;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      padding: 35px 0 55px;
+
+      text-align: center;
+
+      color: #92717b;
+
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       LOADING
+       ========================================================= */
+
+    .loading {
+      position: fixed;
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(255,249,242,0.82);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .loading.show {
+      display: flex;
+    }
+
+    .loader-card {
+      width: min(340px, calc(100% - 40px));
+
+      padding: 28px;
+
+      border-radius: 25px;
+
+      text-align: center;
+
+      background: rgba(255,255,255,0.9);
+
+      box-shadow:
+        0 30px 80px rgba(80,25,40,0.15);
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+
+      margin: 0 auto 15px;
+
+      border-radius: 50%;
+
+      border:
+        4px solid rgba(124,24,52,0.1);
+
+      border-top-color: #7c1834;
+
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader-card strong {
+      color: #711731;
+    }
+
+    .loader-card p {
+      margin-top: 6px;
+
+      font-size: 12px;
+
+      color: #85646f;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 760px) {
+
+      .nav-inner {
+        padding: 11px 14px;
+      }
+
+      .nav-links {
+        gap: 2px;
+      }
+
+      .nav-links a {
+        padding: 8px 8px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding:
+          50px 0 30px;
+      }
+
+      .container {
+        width: min(100% - 20px, 1100px);
+      }
+
+      .section-card {
+        padding: 20px 16px;
+        border-radius: 22px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .participant {
+        padding: 16px;
+      }
+
+      .summary {
+        border-radius: 17px;
+        bottom: 7px;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .date-pill {
+        font-size: 11px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       BACKGROUND
+       ========================================================= -->
+
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+  </div>
+
+  <!-- =========================================================
+       LOADING
+       ========================================================= -->
+
+  <div class="loading" id="loading">
+    <div class="loader-card">
+      <div class="spinner"></div>
+
+      <strong id="loadingTitle">
+        Please wait
+      </strong>
+
+      <p id="loadingText">
+        Processing your registration...
+      </p>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
+
+  <nav class="nav">
+    <div class="nav-inner">
+
+      <a href="#" class="brand">
+
+        <div class="brand-mark">
+          ✦
+        </div>
+
+        <div class="brand-text">
+          WORLD PEACE FESTIVAL
+          <span>2026 · LUCKNOW</span>
+        </div>
+
+      </a>
+
+      <div class="nav-links">
+
+        <a href="#notice">
+          Notice
+        </a>
+
+        <a href="#registrationSection">
+          Registration
+        </a>
+
+        <a href="#paymentSection">
+          Payment
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- =========================================================
+       MAIN
+       ========================================================= -->
+
+  <main>
+
+    <div class="container">
+
+      <!-- =====================================================
+           HERO
+           ===================================================== -->
+
+      <section class="hero">
+
+        <div class="hero-badge">
+          ✦ LUCKNOW · 8–9 OCTOBER 2026
+        </div>
+
+        <h1>
+          World Peace Festival
+        </h1>
+
+        <div class="hero-hindi hindi">
+          विश्व शांति महोत्सव 2026
+        </div>
+
+        <p class="hero-subtitle">
+          A gathering of pastors, evangelists and church leaders
+          for fellowship, leadership, prayer and a shared vision
+          for peace.
+        </p>
+
+        <div class="hero-dates">
+
+          <div class="date-pill">
+            📍 Lucknow
+          </div>
+
+          <div class="date-pill">
+            📅 8–9 October 2026
+          </div>
+
+          <div class="date-pill">
+            ₹300 / Person
+          </div>
+
+          <div class="date-pill">
+            600 Seats
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================================
+           NOTICE
+           ===================================================== -->
+
+      <section
+        class="glass-card section-card notice-card"
+        id="notice"
+      >
+
+        <div class="notice-header">
+
+          <div class="notice-icon">
+            !
+          </div>
+
+          <div>
+
+            <div class="eyebrow">
+              Important Notice
+            </div>
+
+            <h2 class="section-title">
+              Before you register
+            </h2>
+
+            <div class="section-title-hindi hindi">
+              पंजीकरण से पहले महत्वपूर्ण सूचना
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="deadline">
+          REGISTRATION CLOSES:
+          30 SEPTEMBER 2026 · 5:00 PM
+        </div>
+
+        <ul class="notice-list">
+
+          <li>
+            This meeting is only for Pastors,
+            Evangelists and Church Leaders.
+          </li>
+
+          <li>
+            <strong>NO SPOT REGISTRATION.</strong>
+            Registration must be completed before the deadline.
+          </li>
+
+          <li>
+            Please carry a valid photo identification document.
+          </li>
+
+          <li>
+            Children below 18 years of age are not permitted.
+          </li>
+
+          <li>
+            Registration fee is ₹300 per participant.
+          </li>
+
+          <li>
+            Maximum capacity is 600 participants.
+          </li>
+
+          <li>
+            Reporting: 8 October 2026 at 9:00 AM.
+          </li>
+
+          <li>
+            Meeting begins: 8 October 2026 at 10:00 AM.
+          </li>
+
+          <li>
+            Closing: 9 October 2026 at 10:00 PM.
+          </li>
+
+        </ul>
+
+        <div class="notice-hindi hindi">
+
+          <strong>
+            यह मीटिंग केवल पादरियों, प्रचारकों और चर्च के अगुआओं
+            के लिए है।
+          </strong>
+
+          <br><br>
+
+          मौके पर कोई पंजीकरण नहीं होगा।
+          कृपया अपने साथ एक वैध फोटो पहचान पत्र लाएं।
+          18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी।
+
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+
+            <div class="step-number">1</div>
+
+            <strong>
+              Read & Agree
+            </strong>
+
+            <p>
+              Read the important information and confirm.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">2</div>
+
+            <strong>
+              Register
+            </strong>
+
+            <p>
+              Enter your details and add other participants.
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">3</div>
+
+            <strong>
+              Pay & Confirm
+            </strong>
+
+            <p>
+              Pay ₹300/person and complete payment verification.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="gate">
+
+          <label class="check-line">
+
+            <input
+              type="checkbox"
+              id="noticeAgree"
+            />
+
+            <span>
+              I have read and understood the information above
+              and agree to continue with registration.
+              <br>
+              <span class="hindi">
+                मैंने ऊपर दी गई जानकारी पढ़ और समझ ली है और
+                पंजीकरण जारी रखने के लिए सहमत हूँ।
+              </span>
+            </span>
+
+          </label>
+
+          <button
+            class="primary-btn"
+            id="startRegistration"
+            disabled
+          >
+            Continue to Registration →
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================================
+           REGISTRATION
+           ===================================================== -->
+
+      <section
+        class="glass-card section-card"
+        id="registrationSection"
+      >
+
+        <div class="form-section">
+
+          <div class="form-section-heading">
+
+            <h3>
+              1. Registrant Details
+            </h3>
+
+            <span>
+              REQUIRED
+            </span>
+
+          </div>
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label>
+                Full Name
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="input"
+                id="registrantName"
+                type="text"
+                autocomplete="name"
+                placeholder="Enter your full name"
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                Mobile / WhatsApp
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="input"
+                id="registrantMobile"
+                type="tel"
+                autocomplete="tel"
+                inputmode="numeric"
+                placeholder="10-digit mobile number"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-section">
+
+          <div class="form-section-heading">
+
+            <h3>
+              2. Participants
+            </h3>
+
+            <span id="participantCountLabel">
+              1 PARTICIPANT
+            </span>
+
+          </div>
+
+          <div
+            class="participants"
+            id="participants"
+          ></div>
+
+          <button
+            type="button"
+            class="add-participant"
+            id="addParticipant"
+          >
+            ＋ Add Another Participant
+          </button>
+
+        </div>
+
+        <div class="form-section">
+
+          <div class="form-section-heading">
+
+            <h3>
+              3. Confirmation
+            </h3>
+
+            <span>
+              PLEASE CONFIRM
+            </span>
+
+          </div>
+
+          <div class="confirmations">
+
+            <label class="check-line confirmation">
+
+              <input
+                type="checkbox"
+                class="confirmationCheck"
+              />
+
+              <span>
+                I confirm that the information provided is correct
+                and that the participants listed intend to attend.
+              </span>
+
+            </label>
+
+            <label class="check-line confirmation">
+
+              <input
+                type="checkbox"
+                class="confirmationCheck"
+              />
+
+              <span>
+                I understand that there is no spot registration
+                and registration is subject to seat availability.
+              </span>
+
+            </label>
+
+            <label class="check-line confirmation">
+
+              <input
+                type="checkbox"
+                class="confirmationCheck"
+              />
+
+              <span>
+                I understand that the Hindi information is provided
+                for convenience and I will contact the organizers
+                if any correction or clarification is required.
+              </span>
+
+            </label>
+
+            <label class="check-line confirmation">
+
+              <input
+                type="checkbox"
+                class="confirmationCheck"
+              />
+
+              <span>
+                I confirm that the registration is being made
+                voluntarily and without pressure, inducement
+                or malicious intent.
+              </span>
+
+            </label>
+
+            <label class="check-line confirmation">
+
+              <input
+                type="checkbox"
+                class="confirmationCheck"
+              />
+
+              <span>
+                I accept the registration terms and event
+                requirements stated above.
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <!-- SUMMARY -->
+
+        <div class="summary">
+
+          <div class="summary-row">
+
+            <div>
+
+              <div class="summary-label">
+                PARTICIPANTS
+              </div>
+
+              <div
+                class="summary-value"
+                id="summaryParticipants"
+              >
+                1
+              </div>
+
+            </div>
+
+            <div>
+
+              <div class="summary-label">
+                FEE / PERSON
+              </div>
+
+              <div class="summary-value">
+                ₹300
+              </div>
+
+            </div>
+
+            <div class="summary-total">
+
+              <div class="summary-label">
+                TOTAL
+              </div>
+
+              <div
+                class="summary-value"
+                id="summaryTotal"
+              >
+                ₹300
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            class="primary-btn submit-registration"
+            id="submitRegistration"
+          >
+            Continue to Payment →
+          </button>
+
+        </div>
+
+        <div
+          class="status"
+          id="registrationStatus"
+        ></div>
+
+      </section>
+
+      <!-- =====================================================
+           PAYMENT
+           ===================================================== -->
+
+      <section
+        class="glass-card section-card"
+        id="paymentSection"
+      >
+
+        <div class="eyebrow">
+          Registration Created
+        </div>
+
+        <h2 class="section-title">
+          Complete your payment
+        </h2>
+
+        <div class="section-title-hindi hindi">
+          भुगतान पूरा करें
+        </div>
+
+        <div class="payment-id">
+
+          <small>
+            Temporary Registration ID
+          </small>
+
+          <strong id="tempId">
+            WPF26-TMP-00000
+          </strong>
+
+        </div>
+
+        <div class="payment-box">
+
+          <div class="payment-instructions">
+
+            Your registration details have been saved.
+
+            <br><br>
+
+            Please pay:
+
+            <strong id="paymentAmount">
+              ₹300
+            </strong>
+
+            and then submit your payment reference below.
+
+            <br><br>
+
+            <strong>
+              Important:
+            </strong>
+
+            Keep your Temporary Registration ID with you
+            until payment confirmation is complete.
+
+          </div>
+
+          <div class="upi-box">
+
+            <div class="eyebrow">
+              UPI PAYMENT
+            </div>
+
+            <div
+              class="upi-value"
+              id="upiValue"
+            >
+              YOUR-UPI-ID@BANK
+            </div>
+
+            <button
+              type="button"
+              class="copy-btn"
+              id="copyUpi"
+            >
+              Copy UPI ID
+            </button>
+
+          </div>
+
+          <div
+            class="grid"
+            style="margin-top:20px;"
+          >
+
+            <div class="field">
+
+              <label>
+                UTR / Transaction Reference
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="input"
+                id="utr"
+                type="text"
+                placeholder="Enter UTR / transaction ID"
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                Payment Screenshot
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="file-input"
+                id="paymentScreenshot"
+                type="file"
+                accept="image/*"
+              />
+
+            </div>
+
+          </div>
+
+          <button
+            class="primary-btn"
+            id="verifyPayment"
+          >
+            Submit Payment Details →
+          </button>
+
+          <div
+            class="status"
+            id="paymentStatus"
+          ></div>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================================
+           SUCCESS
+           ===================================================== -->
+
+      <section
+        class="glass-card section-card"
+        id="successSection"
+      >
+
+        <div class="success">
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <h2>
+            Registration Confirmed
+          </h2>
+
+          <p>
+            Thank you. Your registration has been successfully
+            recorded.
+          </p>
+
+          <p class="hindi">
+            धन्यवाद। आपका पंजीकरण सफलतापूर्वक दर्ज हो गया है।
+          </p>
+
+          <div
+            class="ids"
+            id="successIds"
+          ></div>
+
+          <p style="margin-top:20px;">
+            Please save your Permanent Registration ID and
+            keep it available for the event.
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================================
+           CONTACT
+           ===================================================== -->
+
+      <section
+        class="glass-card section-card"
+        id="contact"
+      >
+
+        <div class="eyebrow">
+          Contact
+        </div>
+
+        <h2 class="section-title">
+          Need help?
+        </h2>
+
+        <div class="section-title-hindi hindi">
+          सहायता चाहिए?
+        </div>
+
+        <p
+          style="
+            margin-top:15px;
+            color:#684b55;
+            line-height:1.7;
+            font-size:14px;
+          "
+        >
+          For registration or payment assistance, please contact
+          the event organizers.
+        </p>
+
+        <!-- REPLACE THESE WITH REAL CONTACT DETAILS -->
+
+        <div
+          style="
+            margin-top:18px;
+            display:grid;
+            gap:8px;
+            color:#741932;
+            font-size:13px;
+            font-weight:700;
+          "
+        >
+
+          <div>
+            📱 WhatsApp:
+            <span id="contactWhatsapp">
+              ADD NUMBER
+            </span>
+          </div>
+
+          <div>
+            ☎ Phone:
+            <span id="contactPhone">
+              ADD NUMBER
+            </span>
+          </div>
+
+          <div>
+            ✉ Email:
+            <span id="contactEmail">
+              ADD EMAIL
+            </span>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 World Peace Festival · Lucknow
+  </footer>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       CONFIGURATION
+       ========================================================= */
+
+    const CONFIG = {
+
+      /*
+       * IMPORTANT
+       *
+       * Paste your deployed Google Apps Script WEB APP URL here.
+       *
+       * Example:
+       *
+       * https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+       */
+
+      APPS_SCRIPT_URL:
+        "PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE",
+
+      EVENT_NAME:
+        "World Peace Festival 2026",
+
+      FEE_PER_PERSON:
+        300,
+
+      MAX_PARTICIPANTS:
+        600,
+
+      MIN_AGE:
+        18,
+
+      /*
+       * Replace these before launch.
+       */
+
+      UPI_ID:
+        "YOUR-UPI-ID@BANK",
+
+      CONTACT_WHATSAPP:
+        "ADD NUMBER",
+
+      CONTACT_PHONE:
+        "ADD NUMBER",
+
+      CONTACT_EMAIL:
+        "ADD EMAIL"
+
+    };
+
+
+    /* =========================================================
+       DOM
+       ========================================================= */
+
+    const $ = (id) =>
+      document.getElementById(id);
+
+
+    /* =========================================================
+       STATE
+       ========================================================= */
+
+    let participants = [];
+
+    let currentTempId = null;
+
+    let registrationPayload = null;
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        /*
+         * Initial participant
+         */
+
+        addParticipant(false);
+
+        /*
+         * UPI
+         */
+
+        $("upiValue").textContent =
+          CONFIG.UPI_ID;
+
+        /*
+         * Contact
+         */
+
+        $("contactWhatsapp").textContent =
+          CONFIG.CONTACT_WHATSAPP;
+
+        $("contactPhone").textContent =
+          CONFIG.CONTACT_PHONE;
+
+        $("contactEmail").textContent =
+          CONFIG.CONTACT_EMAIL;
+
+        /*
+         * Notice gate
+         */
+
+        $("noticeAgree")
+          .addEventListener(
+            "change",
+            () => {
+
+              $("startRegistration").disabled =
+                !$("noticeAgree").checked;
+
+            }
+          );
+
+        /*
+         * Start registration
+         */
+
+        $("startRegistration")
+          .addEventListener(
+            "click",
+            openRegistration
+          );
+
+        /*
+         * Add participant
+         */
+
+        $("addParticipant")
+          .addEventListener(
+            "click",
+            () => addParticipant(true)
+          );
+
+        /*
+         * Registration submit
+         */
+
+        $("submitRegistration")
+          .addEventListener(
+            "click",
+            submitRegistration
+          );
+
+        /*
+         * Payment submit
+         */
+
+        $("verifyPayment")
+          .addEventListener(
+            "click",
+            submitPayment
+          );
+
+        /*
+         * Copy UPI
+
+         */
+
+        $("copyUpi")
+          .addEventListener(
+            "click",
+            copyUpi
+          );
+
+        updateSummary();
+
+      }
+    );
+
+
+    /* =========================================================
+       NOTICE → REGISTRATION
+       ========================================================= */
+
+    function openRegistration() {
+
+      $("registrationSection").style.display =
+        "block";
+
+      $("registrationSection")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    }
+
+
+    /* =========================================================
+       ADD PARTICIPANT
+       ========================================================= */
+
+    function addParticipant(scrollToNew) {
+
+      if (
+        participants.length >=
+        CONFIG.MAX_PARTICIPANTS
+      ) {
+
+        showStatus(
+          "registrationStatus",
+          "error",
+          "The maximum number of participants has been reached."
+        );
+
+        return;
+
+      }
+
+      const id =
+        Date.now() +
+        Math.random();
+
+      participants.push({
+        id: id
+      });
+
+      renderParticipants();
+
+      updateSummary();
+
+      if (scrollToNew) {
+
+        setTimeout(() => {
+
+          const cards =
+            document.querySelectorAll(
+              ".participant"
+            );
+
+          const last =
+            cards[cards.length - 1];
+
+          if (last) {
+
+            last.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+          }
+
+        }, 100);
+
+      }
+
+    }
+
+
+    /* =========================================================
+       REMOVE PARTICIPANT
+       ========================================================= */
+
+    function removeParticipant(id) {
+
+      if (participants.length <= 1) {
+
+        return;
+
+      }
+
+      const element =
+        document.querySelector(
+          `[data-participant-id="${id}"]`
+        );
+
+      if (element) {
+
+        element.style.opacity = "0";
+        element.style.transform = "scale(.96)";
+
+      }
+
+      setTimeout(() => {
+
+        participants =
+          participants.filter(
+            p => p.id !== id
+          );
+
+        renderParticipants();
+
+        updateSummary();
+
+      }, 180);
+
+    }
+
+
+    /* =========================================================
+       RENDER PARTICIPANTS
+       ========================================================= */
+
+    function renderParticipants() {
+
+      const container =
+        $("participants");
+
+      container.innerHTML = "";
+
+      participants.forEach(
+        (participant, index) => {
+
+          const card =
+            document.createElement("div");
+
+          card.className =
+            "participant";
+
+          card.dataset.participantId =
+            participant.id;
+
+          card.innerHTML = `
+
+            <div class="participant-top">
+
+              <div class="participant-title">
+
+                <div class="participant-number">
+                  ${index + 1}
+                </div>
+
+                Participant ${index + 1}
+
+              </div>
+
+              ${
+                participants.length > 1
+                ? `
+                  <button
+                    type="button"
+                    class="remove-btn"
+                    onclick="removeParticipant(${participant.id})"
+                  >
+                    ✕ Remove
+                  </button>
+                `
+                : ""
+              }
+
+            </div>
+
+            <div class="grid">
+
+              <div class="field">
+
+                <label>
+                  Full Name
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-name"
+                  data-id="${participant.id}"
+                  type="text"
+                  placeholder="Full name"
+                  autocomplete="name"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Age
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-age"
+                  data-id="${participant.id}"
+                  type="number"
+                  min="18"
+                  max="100"
+                  placeholder="18+"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Father / Husband Name
+                </label>
+
+                <input
+                  class="input participant-father"
+                  data-id="${participant.id}"
+                  type="text"
+                  placeholder="Optional"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Mobile / WhatsApp
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-mobile"
+                  data-id="${participant.id}"
+                  type="tel"
+                  inputmode="numeric"
+                  placeholder="10-digit mobile number"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  District
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-district"
+                  data-id="${participant.id}"
+                  type="text"
+                  placeholder="District"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  State
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  class="select participant-state"
+                  data-id="${participant.id}"
+                >
+
+                  <option value="">
+                    Select State
+                  </option>
+
+                  ${getStatesOptions()}
+
+                </select>
+
+              </div>
+
+              <div class="field full">
+
+                <label>
+                  Church / Ministry / Organisation
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-church"
+                  data-id="${participant.id}"
+                  type="text"
+                  placeholder="Church / Ministry / Organisation"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Designation
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  class="select participant-designation"
+                  data-id="${participant.id}"
+                >
+
+                  <option value="">
+                    Select designation
+                  </option>
+
+                  <option>Pastor</option>
+                  <option>Evangelist</option>
+                  <option>Bishop</option>
+                  <option>Reverend</option>
+                  <option>Elder</option>
+                  <option>Minister</option>
+                  <option>Church Leader</option>
+                  <option>Director</option>
+                  <option>Coordinator</option>
+                  <option>Other</option>
+
+                </select>
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Recommender
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  class="input participant-recommender"
+                  data-id="${participant.id}"
+                  type="text"
+                  placeholder="Name of recommender"
+                />
+
+              </div>
+
+              <div class="field full">
+
+                <label>
+                  Accommodation Required?
+                  <span class="required">*</span>
+                </label>
+
+                <div class="radio-row">
+
+                  <label class="radio-option">
+
+                    <input
+                      type="radio"
+                      name="accommodation-${participant.id}"
+                      value="Yes"
+                    />
+
+                    <span>
+                      Yes
+                    </span>
+
+                  </label>
+
+                  <label class="radio-option">
+
+                    <input
+                      type="radio"
+                      name="accommodation-${participant.id}"
+                      value="No"
+                      checked
+                    />
+
+                    <span>
+                      No
+                    </span>
+
+                  </label>
+
+                </div>
+
+              </div>
+
+              <div class="field full">
+
+                <label>
+                  Food Preference
+                  <span class="required">*</span>
+                </label>
+
+                <div class="radio-row">
+
+                  <label class="radio-option">
+
+                    <input
+                      type="radio"
+                      name="food-${participant.id}"
+                      value="Veg"
+                      checked
+                    />
+
+                    <span>
+                      Vegetarian
+                    </span>
+
+                  </label>
+
+                  <label class="radio-option">
+
+                    <input
+                      type="radio"
+                      name="food-${participant.id}"
+                      value="Non Veg"
+                    />
+
+                    <span>
+                      Non Vegetarian
+                    </span>
+
+                  </label>
+
+                </div>
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Arrival Date & Time
+                </label>
+
+                <input
+                  class="input participant-arrival"
+                  data-id="${participant.id}"
+                  type="datetime-local"
+                />
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Departure Date & Time
+                </label>
+
+                <input
+                  class="input participant-departure"
+                  data-id="${participant.id}"
+                  type="datetime-local"
+                />
+
+              </div>
+
+            </div>
+          `;
+
+          container.appendChild(card);
+
+        }
+      );
+
+      /*
+       * Restore any changed fields after rendering.
+       */
+
+      attachParticipantListeners();
+
+      $("participantCountLabel").textContent =
+        `${participants.length} ${
+          participants.length === 1
+            ? "PARTICIPANT"
+            : "PARTICIPANTS"
+        }`;
+
+    }
+
+
+    /* =========================================================
+       STATE OPTIONS
+       ========================================================= */
+
+    function getStatesOptions() {
+
+      const states = [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal",
+        "Delhi",
+        "Jammu and Kashmir",
+        "Ladakh",
+        "Puducherry",
+        "Chandigarh"
+      ];
+
+      return states
+        .map(
+          state =>
+            `<option ${
+              state === "Uttar Pradesh"
+                ? "selected"
+                : ""
+            }>${state}</option>`
+        )
+        .join("");
+
+    }
+
+
+    /* =========================================================
+       PARTICIPANT INPUT LISTENERS
+       ========================================================= */
+
+    function attachParticipantListeners() {
+
+      document
+        .querySelectorAll(
+          ".participant-name, .participant-age, .participant-father, .participant-mobile, .participant-district, .participant-state, .participant-church, .participant-designation, .participant-recommender, .participant-arrival, .participant-departure"
+        )
+        .forEach(
+          element => {
+
+            element.addEventListener(
+              "input",
+              updateSummary
+            );
+
+            element.addEventListener(
+              "change",
+              updateSummary
+            );
+
+          }
+        );
+
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    function updateSummary() {
+
+      const count =
+        participants.length;
+
+      const total =
+        count *
+        CONFIG.FEE_PER_PERSON;
+
+      $("summaryParticipants")
+        .textContent =
+        count;
+
+      $("summaryTotal")
+        .textContent =
+        `₹${total.toLocaleString("en-IN")}`;
+
+      $("paymentAmount")
+        .textContent =
+        `₹${total.toLocaleString("en-IN")}`;
+
+    }
+
+
+    /* =========================================================
+       COLLECT FORM DATA
+       ========================================================= */
+
+    function collectParticipants() {
+
+      return participants.map(
+        participant => {
+
+          const id =
+            participant.id;
+
+          const get =
+            selector =>
+              document.querySelector(
+                `${selector}[data-id="${id}"]`
+              );
+
+          const accommodation =
+            document.querySelector(
+              `input[name="accommodation-${id}"]:checked`
+            );
+
+          const food =
+            document.querySelector(
+              `input[name="food-${id}"]:checked`
+            );
+
+          return {
+
+            name:
+              get(".participant-name")?.value.trim(),
+
+            age:
+              get(".participant-age")?.value,
+
+            fatherHusband:
+              get(".participant-father")?.value.trim(),
+
+            mobile:
+              get(".participant-mobile")?.value.trim(),
+
+            district:
+              get(".participant-district")?.value.trim(),
+
+            state:
+              get(".participant-state")?.value,
+
+            church:
+              get(".participant-church")?.value.trim(),
+
+            designation:
+              get(".participant-designation")?.value,
+
+            recommender:
+              get(".participant-recommender")?.value.trim(),
+
+            accommodation:
+              accommodation?.value || "No",
+
+            food:
+              food?.value || "Veg",
+
+            arrival:
+              get(".participant-arrival")?.value || "",
+
+            departure:
+              get(".participant-departure")?.value || ""
+
+          };
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       VALIDATE
+       ========================================================= */
+
+    function validateRegistration() {
+
+      clearInvalidFields();
+
+      let valid = true;
+
+      const registrantName =
+        $("registrantName");
+
+      const registrantMobile =
+        $("registrantMobile");
+
+      if (
+        !registrantName.value.trim()
+      ) {
+
+        invalid(
+          registrantName
+        );
+
+        valid = false;
+
+      }
+
+      if (
+        !validMobile(
+          registrantMobile.value
+        )
+      ) {
+
+        invalid(
+          registrantMobile
+        );
+
+        valid = false;
+
+      }
+
+      const data =
+        collectParticipants();
+
+      data.forEach(
+        (p, index) => {
+
+          const id =
+            participants[index].id;
+
+          const fields = [
+
+            [
+              p.name,
+              `.participant-name[data-id="${id}"]`
+            ],
+
+            [
+              p.age,
+              `.participant-age[data-id="${id}"]`
+            ],
+
+            [
+              p.mobile,
+              `.participant-mobile[data-id="${id}"]`
+            ],
+
+            [
+              p.district,
+              `.participant-district[data-id="${id}"]`
+            ],
+
+            [
+              p.state,
+              `.participant-state[data-id="${id}"]`
+            ],
+
+            [
+              p.church,
+              `.participant-church[data-id="${id}"]`
+            ],
+
+            [
+              p.designation,
+              `.participant-designation[data-id="${id}"]`
+            ],
+
+            [
+              p.recommender,
+              `.participant-recommender[data-id="${id}"]`
+            ]
+
+          ];
+
+          fields.forEach(
+            ([value, selector]) => {
+
+              const field =
+                document.querySelector(
+                  selector
+                );
+
+              if (
+                !String(value || "").trim()
+              ) {
+
+                invalid(field);
+
+                valid = false;
+
+              }
+
+            }
+          );
+
+          if (
+            p.age &&
+            Number(p.age) < CONFIG.MIN_AGE
+          ) {
+
+            const ageField =
+              document.querySelector(
+                `.participant-age[data-id="${id}"]`
+              );
+
+            invalid(ageField);
+
+            valid = false;
+
+          }
+
+          if (
+            !validMobile(p.mobile)
+          ) {
+
+            invalid(
+              document.querySelector(
+                `.participant-mobile[data-id="${id}"]`
+              )
+            );
+
+            valid = false;
+
+          }
+
+        }
+      );
+
+      const checks =
+        document.querySelectorAll(
+          ".confirmationCheck"
+        );
+
+      checks.forEach(
+        check => {
+
+          if (!check.checked) {
+
+            check
+              .closest(".confirmation")
+              .style.borderColor =
+              "rgba(195,61,88,.45)";
+
+            valid = false;
+
+          } else {
+
+            check
+              .closest(".confirmation")
+              .style.borderColor =
+              "";
+
+          }
+
+        }
+      );
+
+      if (!valid) {
+
+        showStatus(
+          "registrationStatus",
+          "error",
+          "Please complete all required fields and confirmations before continuing."
+        );
+
+        return false;
+
+      }
+
+      return true;
+
+    }
+
+
+    function clearInvalidFields() {
+
+      document
+        .querySelectorAll(
+          ".invalid"
+        )
+        .forEach(
+          el =>
+            el.classList.remove(
+              "invalid"
+            )
+        );
+
+    }
+
+
+    function invalid(element) {
+
+      if (!element) return;
+
+      element.classList.add(
+        "invalid"
+      );
+
+    }
+
+
+    function validMobile(value) {
+
+      const digits =
+        String(value || "")
+          .replace(/\D/g, "");
+
+      return (
+        digits.length === 10 &&
+        /^[6-9]/.test(digits)
+      );
+
+    }
+
+
+    /* =========================================================
+       SUBMIT REGISTRATION
+       ========================================================= */
+
+    async function submitRegistration() {
+
+      if (
+        !validateRegistration()
+      ) {
+
+        return;
+
+      }
+
+      if (
+        !isConfigured()
+      ) {
+
+        showStatus(
+          "registrationStatus",
+          "error",
+          "The Google Apps Script backend URL has not been configured yet."
+        );
+
+        return;
+
+      }
+
+      const participantData =
+        collectParticipants();
+
+      registrationPayload = {
+
+        action:
+          "createRegistration",
+
+        event:
+          CONFIG.EVENT_NAME,
+
+        registrantName:
+          $("registrantName").value.trim(),
+
+        registrantMobile:
+          $("registrantMobile").value.trim(),
+
+        participants:
+          participantData,
+
+        participantCount:
+          participantData.length,
+
+        amount:
+          participantData.length *
+          CONFIG.FEE_PER_PERSON
+
+      };
+
+      setLoading(
+        true,
+        "Saving registration",
+        "Connecting to the registration database..."
+      );
+
+      try {
+
+        /*
+         * Apps Script endpoint.
+         *
+         * text/plain avoids a JSON preflight request.
+         */
+
+        const response =
+          await fetch(
+            CONFIG.APPS_SCRIPT_URL,
+            {
+
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+              },
+
+              body:
+                JSON.stringify(
+                  registrationPayload
+                ),
+
+              redirect: "follow"
+
+            }
+          );
+
+        /*
+         * Some Apps Script deployments return
+         * a readable response, some deployments
+         * may return an opaque response depending
+         * on browser/CORS behavior.
+         */
+
+        let result = null;
+
+        try {
+
+          result =
+            await response.json();
+
+        } catch (error) {
+
+          /*
+           * If the sheet write succeeded but
+           * the browser cannot read the response,
+           * we cannot safely invent a temporary ID.
+           */
+
+          throw new Error(
+            "The server responded, but the browser could not read the confirmation. Please check the Apps Script deployment and CORS configuration."
+          );
+
+        }
+
+        if (
+          !result ||
+          !result.success
+        ) {
+
+          throw new Error(
+            result?.error ||
+            "Registration could not be created."
+          );
+
+        }
+
+        currentTempId =
+          result.tempId;
+
+        showPaymentSection(
+          result
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Registration error:",
+          error
+        );
+
+        showStatus(
+          "registrationStatus",
+          "error",
+          error.message ||
+          "Unable to submit registration."
+        );
+
+      } finally {
+
+        setLoading(
+          false
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       PAYMENT SECTION
+       ========================================================= */
+
+    function showPaymentSection(
+      result
+    ) {
+
+      $("tempId").textContent =
+        result.tempId;
+
+      $("paymentAmount").textContent =
+        `₹${Number(
+          result.amount ||
+          registrationPayload.amount
+        ).toLocaleString("en-IN")}`;
+
+      $("registrationSection").style.display =
+        "none";
+
+      $("paymentSection").style.display =
+        "block";
+
+      $("paymentSection")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    }
+
+
+    /* =========================================================
+       PAYMENT SUBMISSION
+       ========================================================= */
+
+    async function submitPayment() {
+
+      const utr =
+        $("utr").value.trim();
+
+      const screenshot =
+        $("paymentScreenshot").files[0];
+
+      if (!currentTempId) {
+
+        showStatus(
+          "paymentStatus",
+          "error",
+          "Your temporary registration ID is missing. Please restart the registration."
+        );
+
+        return;
+
+      }
+
+      if (!utr) {
+
+        invalid(
+          $("utr")
+        );
+
+        showStatus(
+          "paymentStatus",
+          "error",
+          "Please enter the UTR / transaction reference."
+        );
+
+        return;
+
+      }
+
+      if (!screenshot) {
+
+        showStatus(
+          "paymentStatus",
+          "error",
+          "Please upload your payment screenshot."
+        );
+
+        return;
+
+      }
+
+      /*
+       * For the first test we restrict the screenshot.
+       */
+
+      if (
+        screenshot.size >
+        5 * 1024 * 1024
+      ) {
+
+        showStatus(
+          "paymentStatus",
+          "error",
+          "Please upload an image smaller than 5 MB."
+        );
+
+        return;
+
+      }
+
+      setLoading(
+        true,
+        "Uploading payment",
+        "Saving your payment details..."
+      );
+
+      try {
+
+        const base64 =
+          await fileToBase64(
+            screenshot
+          );
+
+        const payload = {
+
+          action:
+            "submitPayment",
+
+          tempId:
+            currentTempId,
+
+          utr:
+            utr,
+
+          fileName:
+            screenshot.name,
+
+          mimeType:
+            screenshot.type,
+
+          screenshot:
+            base64
+
+        };
+
+        const response =
+          await fetch(
+            CONFIG.APPS_SCRIPT_URL,
+            {
+
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+              },
+
+              body:
+                JSON.stringify(payload),
+
+              redirect: "follow"
+
+            }
+          );
+
+        let result;
+
+        try {
+
+          result =
+            await response.json();
+
+        } catch {
+
+          throw new Error(
+            "Payment was sent, but the server response could not be read."
+          );
+
+        }
+
+        if (
+          !result ||
+          !result.success
+        ) {
+
+          throw new Error(
+            result?.error ||
+            "Payment submission failed."
+          );
+
+        }
+
+        showPaymentSuccess(
+          result
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Payment error:",
+          error
+        );
+
+        showStatus(
+          "paymentStatus",
+          "error",
+          error.message ||
+          "Unable to submit payment."
+        );
+
+      } finally {
+
+        setLoading(
+          false
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       SUCCESS
+       ========================================================= */
+
+    function showPaymentSuccess(
+      result
+    ) {
+
+      const ids =
+        result.permanentIds ||
+        [];
+
+      const container =
+        $("successIds");
+
+      container.innerHTML = "";
+
+      if (!ids.length) {
+
+        container.innerHTML = `
+
+          <div class="id-card">
+
+            <small>
+              Temporary Registration ID
+            </small>
+
+            <strong>
+              ${escapeHtml(currentTempId)}
+            </strong>
+
+          </div>
+
+        `;
+
+      } else {
+
+        ids.forEach(
+          item => {
+
+            const name =
+              typeof item === "object"
+                ? item.name
+                : "";
+
+            const id =
+              typeof item === "object"
+                ? item.id
+                : item;
+
+            const card =
+              document.createElement(
+                "div"
+              );
+
+            card.className =
+              "id-card";
+
+            card.innerHTML = `
+
+              <small>
+                ${escapeHtml(name)}
+              </small>
+
+              <strong>
+                ${escapeHtml(id)}
+              </strong>
+
+            `;
+
+            container.appendChild(
+              card
+            );
+
+          }
+        );
+
+      }
+
+      $("paymentSection").style.display =
+        "none";
+
+      $("successSection").style.display =
+        "block";
+
+      $("successSection")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    }
+
+
+    /* =========================================================
+       FILE → BASE64
+       ========================================================= */
+
+    function fileToBase64(
+      file
+    ) {
+
+      return new Promise(
+        (resolve, reject) => {
+
+          const reader =
+            new FileReader();
+
+          reader.onload =
+            () => {
+
+              const result =
+                String(
+                  reader.result
+                );
+
+              /*
+               * Remove:
+               * data:image/jpeg;base64,
+               */
+
+              resolve(
+                result.split(",")[1]
+              );
+
+            };
+
+          reader.onerror =
+            reject;
+
+          reader.readAsDataURL(
+            file
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       COPY UPI
+       ========================================================= */
+
+    async function copyUpi() {
+
+      try {
+
+        await navigator.clipboard.writeText(
+          CONFIG.UPI_ID
+        );
+
+        $("copyUpi").textContent =
+          "Copied ✓";
+
+        setTimeout(
+          () => {
+
+            $("copyUpi").textContent =
+              "Copy UPI ID";
+
+          },
+          1800
+        );
+
+      } catch {
+
+        alert(
+          "UPI ID: " +
+          CONFIG.UPI_ID
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    function showStatus(
+      elementId,
+      type,
+      message
+    ) {
+
+      const element =
+        $(elementId);
+
+      element.className =
+        `status show ${type}`;
+
+      element.textContent =
+        message;
+
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+
+    /* =========================================================
+       LOADING
+       ========================================================= */
+
+    function setLoading(
+      visible,
+      title,
+      text
+    ) {
+
+      if (visible) {
+
+        $("loadingTitle")
+          .textContent =
+          title ||
+          "Please wait";
+
+        $("loadingText")
+          .textContent =
+          text ||
+          "Processing...";
+
+        $("loading")
+          .classList.add("show");
+
+      } else {
+
+        $("loading")
+          .classList.remove("show");
+
+      }
+
+    }
+
+
+    /* =========================================================
+       CONFIG CHECK
+       ========================================================= */
+
+    function isConfigured() {
+
+      return (
+        CONFIG.APPS_SCRIPT_URL &&
+        !CONFIG.APPS_SCRIPT_URL.includes(
+          "PASTE_YOUR"
+        )
+      );
+
+    }
+
+
+    /* =========================================================
+       ESCAPE HTML
+       ========================================================= */
+
+    function escapeHtml(
+      value
+    ) {
+
+      return String(
+        value || ""
+      )
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+  </script>
+
+</body>
+</html>
