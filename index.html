@@ -1222,125 +1222,263 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.16);
     }
 
-    /* =========================================================
-       PAYMENT
-       ========================================================= */
+   <!-- =====================================================
+     COMPLETE PAYMENT / LOOKUP
+     ===================================================== -->
 
-    #paymentSection {
-      display: none;
-    }
+<section
+  class="glass-card section-card"
+  id="paymentSection"
+>
 
-    .payment-id {
-      margin-top: 17px;
+  <div class="eyebrow">
+    Complete Payment
+  </div>
 
-      padding: 18px;
+  <h2 class="section-title">
+    Find your registration
+  </h2>
 
-      border-radius: 17px;
+  <div class="section-title-hindi hindi">
+    अपना पंजीकरण खोजें
+  </div>
 
-      background:
-        linear-gradient(
-          135deg,
-          rgba(124,24,52,0.09),
-          rgba(255,218,135,0.15)
-        );
+  <p style="
+    margin-top:14px;
+    color:#684b55;
+    line-height:1.7;
+    font-size:14px;
+  ">
+    Enter the Temporary Registration ID you received
+    after registration to retrieve your details and
+    complete your payment.
+  </p>
 
-      text-align: center;
-    }
+  <!-- LOOKUP -->
 
-    .payment-id small {
-      display: block;
+  <div class="payment-box">
 
-      font-size: 10px;
-      font-weight: 700;
+    <div class="field">
 
-      color: #956979;
+      <label>
+        Temporary Registration ID
+        <span class="required">*</span>
+      </label>
 
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+      <input
+        class="input"
+        id="lookupTempId"
+        type="text"
+        placeholder="Example: WPF26-TMP-48291"
+        autocomplete="off"
+        spellcheck="false"
+      />
 
-    .payment-id strong {
-      display: block;
+      <div class="help">
+        Enter the exact Temporary Registration ID
+        received after submitting your registration.
+      </div>
 
-      margin-top: 6px;
+    </div>
 
-      font-size: 25px;
-      letter-spacing: 0.04em;
+    <button
+      type="button"
+      class="primary-btn"
+      id="lookupRegistration"
+    >
+      Find My Registration →
+    </button>
 
-      color: #721731;
-    }
+    <div
+      class="status"
+      id="lookupStatus"
+    ></div>
 
-    .payment-box {
-      margin-top: 20px;
+  </div>
 
-      padding: 20px;
 
-      border-radius: 20px;
+  <!-- RETRIEVED REGISTRATION -->
 
-      background: rgba(255,255,255,0.52);
+  <div
+    id="retrievedRegistration"
+    style="display:none;"
+  >
 
-      border:
-        1px solid rgba(124,24,52,0.08);
-    }
+    <div class="payment-id">
 
-    .payment-instructions {
-      line-height: 1.7;
+      <small>
+        Temporary Registration ID
+      </small>
 
-      color: #60434e;
+      <strong id="retrievedTempId">
+        WPF26-TMP-00000
+      </strong>
 
-      font-size: 13px;
-    }
+    </div>
 
-    .upi-box {
-      margin-top: 18px;
 
-      padding: 18px;
+    <!-- REGISTRATION SUMMARY -->
 
-      border-radius: 17px;
+    <div class="payment-box">
 
-      background:
-        rgba(124,24,52,0.06);
+      <div class="form-section-heading">
 
-      text-align: center;
-    }
+        <h3>
+          Registration Details
+        </h3>
 
-    .upi-value {
-      font-size: 18px;
-      font-weight: 800;
-      color: #721731;
-    }
+        <span id="retrievedPaymentStatus">
+          PAYMENT PENDING
+        </span>
 
-    .copy-btn {
-      margin-top: 10px;
+      </div>
 
-      padding: 9px 15px;
 
-      border-radius: 10px;
+      <div
+        style="
+          display:grid;
+          grid-template-columns:
+            repeat(2,minmax(0,1fr));
+          gap:10px;
+        "
+        id="retrievedSummary"
+      >
 
-      border: 1px solid rgba(124,24,52,0.2);
+      </div>
 
-      background: white;
 
-      color: #721731;
+      <!-- PARTICIPANTS -->
 
-      font-size: 11px;
-      font-weight: 700;
-    }
+      <div style="margin-top:22px;">
 
-    .file-input {
-      width: 100%;
+        <div class="form-section-heading">
 
-      padding: 12px;
+          <h3>
+            Participants
+          </h3>
 
-      border-radius: 13px;
+        </div>
 
-      border: 1px dashed rgba(124,24,52,0.28);
+        <div
+          id="retrievedParticipants"
+          style="
+            display:grid;
+            gap:10px;
+          "
+        ></div>
 
-      background: rgba(255,255,255,0.5);
+      </div>
 
-      font-size: 12px;
-    }
 
+      <!-- PAYMENT -->
+
+      <div style="margin-top:25px;">
+
+        <div class="form-section-heading">
+
+          <h3>
+            Payment Details
+          </h3>
+
+          <span>
+            ₹300 / PERSON
+          </span>
+
+        </div>
+
+
+        <div class="upi-box">
+
+          <div class="eyebrow">
+            PAY VIA UPI
+          </div>
+
+          <div
+            class="upi-value"
+            id="lookupUpiValue"
+          >
+            YOUR-UPI-ID@BANK
+          </div>
+
+          <button
+            type="button"
+            class="copy-btn"
+            id="lookupCopyUpi"
+          >
+            Copy UPI ID
+          </button>
+
+        </div>
+
+
+        <div
+          class="grid"
+          style="margin-top:20px;"
+        >
+
+          <div class="field">
+
+            <label>
+              UTR / Transaction Reference
+              <span class="required">*</span>
+            </label>
+
+            <input
+              class="input"
+              id="lookupUtr"
+              type="text"
+              placeholder="Enter UTR / transaction reference"
+              autocomplete="off"
+            />
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Payment Screenshot
+              <span class="required">*</span>
+            </label>
+
+            <input
+              class="file-input"
+              id="lookupScreenshot"
+              type="file"
+              accept="image/*"
+            />
+
+            <div class="help">
+              Upload the payment confirmation screenshot.
+              Maximum size: 5 MB.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="primary-btn"
+          id="lookupSubmitPayment"
+        >
+          Submit Payment Details →
+        </button>
+
+
+        <div
+          class="status"
+          id="lookupPaymentStatus"
+        ></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
     /* =========================================================
        STATUS
        ========================================================= */
