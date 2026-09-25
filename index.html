@@ -4363,6 +4363,730 @@
         );
 
     }
+    /* =========================================================
+   PAYMENT LOOKUP STATE
+   ========================================================= */
+
+let lookupRegistrationData = null;
+
+
+/* =========================================================
+   PAYMENT LOOKUP INITIALIZATION
+   ========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    $("lookupRegistration")
+      .addEventListener(
+        "click",
+        lookupRegistration
+      );
+
+    $("lookupSubmitPayment")
+      .addEventListener(
+        "click",
+        submitLookupPayment
+      );
+
+    $("lookupCopyUpi")
+      .addEventListener(
+        "click",
+        copyLookupUpi
+      );
+
+    /*
+     * Allow pressing Enter in the Temp ID box.
+     */
+
+    $("lookupTempId")
+      .addEventListener(
+        "keydown",
+        event => {
+
+          if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            lookupRegistration();
+
+          }
+
+        }
+      );
+
+  }
+);
+
+
+/* =========================================================
+   LOOKUP REGISTRATION
+   ========================================================= */
+
+async function lookupRegistration() {
+
+  const input =
+    $("lookupTempId");
+
+  const tempId =
+    input.value
+      .trim()
+      .toUpperCase();
+
+  input.value =
+    tempId;
+
+
+  if (!tempId) {
+
+    invalid(input);
+
+    showStatus(
+      "lookupStatus",
+      "error",
+      "Please enter your Temporary Registration ID."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !/^WPF26-TMP-\d{5}$/i.test(
+      tempId
+    )
+  ) {
+
+    invalid(input);
+
+    showStatus(
+      "lookupStatus",
+      "error",
+      "Please enter a valid Temporary Registration ID, for example WPF26-TMP-48291."
+    );
+
+    return;
+
+  }
+
+
+  if (!isConfigured()) {
+
+    showStatus(
+      "lookupStatus",
+      "error",
+      "The Google Apps Script backend URL has not been configured."
+    );
+
+    return;
+
+  }
+
+
+  setLoading(
+    true,
+    "Finding registration",
+    "Looking up your registration details..."
+  );
+
+
+  try {
+
+    const response =
+      await fetch(
+        CONFIG.APPS_SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify({
+
+              action:
+                "lookupRegistration",
+
+              tempId:
+                tempId
+
+            }),
+
+          redirect:
+            "follow"
+
+        }
+      );
+
+
+    let result;
+
+    try {
+
+      result =
+        await response.json();
+
+    } catch {
+
+      throw new Error(
+        "The server response could not be read."
+      );
+
+    }
+
+
+    if (
+      !result ||
+      !result.success
+    ) {
+
+      throw new Error(
+        result?.error ||
+        "Registration not found."
+      );
+
+    }
+
+
+    lookupRegistrationData =
+      result;
+
+
+    displayRetrievedRegistration(
+      result
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      "Lookup error:",
+      error
+    );
+
+    showStatus(
+      "lookupStatus",
+      "error",
+      error.message ||
+      "Unable to find your registration."
+    );
+
+  } finally {
+
+    setLoading(
+      false
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   DISPLAY RETRIEVED REGISTRATION
+   ========================================================= */
+
+function displayRetrievedRegistration(
+  result
+) {
+
+  $("lookupStatus")
+    .className =
+    "status";
+
+  $("retrievedRegistration")
+    .style.display =
+    "block";
+
+
+  $("retrievedTempId")
+    .textContent =
+    result.tempId;
+
+
+  $("lookupUpiValue")
+    .textContent =
+    CONFIG.UPI_ID;
+
+
+  /*
+   * Registration summary
+   */
+
+  $("retrievedSummary")
+    .innerHTML = `
+
+      <div class="id-card">
+
+        <small>
+          Registrant
+        </small>
+
+        <strong>
+          ${escapeHtml(
+            result.registrantName
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="id-card">
+
+        <small>
+          Mobile
+        </small>
+
+        <strong>
+          ${escapeHtml(
+            result.registrantMobile
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="id-card">
+
+        <small>
+          Participants
+        </small>
+
+        <strong>
+          ${Number(
+            result.participantCount
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="id-card">
+
+        <small>
+          Amount Due
+        </small>
+
+        <strong>
+          ₹${Number(
+            result.amount
+          ).toLocaleString("en-IN")}
+        </strong>
+
+      </div>
+
+    `;
+
+
+  /*
+   * Payment status
+   */
+
+  $("retrievedPaymentStatus")
+    .textContent =
+    String(
+      result.paymentStatus ||
+      "PAYMENT PENDING"
+    ).toUpperCase();
+
+
+  /*
+   * Participants
+   */
+
+  const participantContainer =
+    $("retrievedParticipants");
+
+  participantContainer.innerHTML =
+    "";
+
+
+  if (
+    Array.isArray(
+      result.participants
+    )
+  ) {
+
+    result.participants.forEach(
+      (participant, index) => {
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+        card.className =
+          "id-card";
+
+        card.innerHTML = `
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:15px;
+            align-items:center;
+          ">
+
+            <div>
+
+              <small>
+                Participant ${index + 1}
+              </small>
+
+              <strong>
+                ${escapeHtml(
+                  participant.name
+                )}
+              </strong>
+
+            </div>
+
+            <div style="
+              text-align:right;
+              font-size:11px;
+              color:#896773;
+            ">
+
+              ${escapeHtml(
+                participant.designation ||
+                ""
+              )}
+
+              <br>
+
+              Age:
+              ${escapeHtml(
+                participant.age ||
+                ""
+              )}
+
+            </div>
+
+          </div>
+
+        `;
+
+        participantContainer
+          .appendChild(card);
+
+      }
+    );
+
+  }
+
+
+  /*
+   * If payment has already been submitted,
+   * don't accidentally encourage another upload.
+   */
+
+  const paymentSubmitted =
+    String(
+      result.paymentStatus ||
+      ""
+    ).toLowerCase()
+    .includes(
+      "submitted"
+    );
+
+
+  if (paymentSubmitted) {
+
+    $("lookupPaymentStatus")
+      .className =
+      "status show info";
+
+    $("lookupPaymentStatus")
+      .textContent =
+      "Payment details have already been submitted for this registration. If you need to make a correction, please contact the organizers.";
+
+  } else {
+
+    $("lookupPaymentStatus")
+      .className =
+      "status";
+
+    $("lookupPaymentStatus")
+      .textContent =
+      "";
+
+  }
+
+
+  $("retrievedRegistration")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+}
+
+
+/* =========================================================
+   SUBMIT PAYMENT FROM LOOKUP
+   ========================================================= */
+
+async function submitLookupPayment() {
+
+  if (
+    !lookupRegistrationData
+  ) {
+
+    showStatus(
+      "lookupPaymentStatus",
+      "error",
+      "Please find your registration first."
+    );
+
+    return;
+
+  }
+
+
+  const utr =
+    $("lookupUtr")
+      .value
+      .trim();
+
+
+  const screenshot =
+    $("lookupScreenshot")
+      .files[0];
+
+
+  if (!utr) {
+
+    invalid(
+      $("lookupUtr")
+    );
+
+    showStatus(
+      "lookupPaymentStatus",
+      "error",
+      "Please enter your UTR / transaction reference."
+    );
+
+    return;
+
+  }
+
+
+  if (!screenshot) {
+
+    showStatus(
+      "lookupPaymentStatus",
+      "error",
+      "Please upload your payment screenshot."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    screenshot.size >
+    5 * 1024 * 1024
+  ) {
+
+    showStatus(
+      "lookupPaymentStatus",
+      "error",
+      "Please upload an image smaller than 5 MB."
+    );
+
+    return;
+
+  }
+
+
+  setLoading(
+    true,
+    "Uploading payment",
+    "Saving your payment screenshot and transaction details..."
+  );
+
+
+  try {
+
+    const base64 =
+      await fileToBase64(
+        screenshot
+      );
+
+
+    const payload = {
+
+      action:
+        "submitPayment",
+
+      tempId:
+        lookupRegistrationData.tempId,
+
+      utr:
+        utr,
+
+      fileName:
+        screenshot.name,
+
+      mimeType:
+        screenshot.type,
+
+      screenshot:
+        base64
+
+    };
+
+
+    const response =
+      await fetch(
+        CONFIG.APPS_SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify(payload),
+
+          redirect:
+            "follow"
+
+        }
+      );
+
+
+    let result;
+
+    try {
+
+      result =
+        await response.json();
+
+    } catch {
+
+      throw new Error(
+        "The payment response could not be read."
+      );
+
+    }
+
+
+    if (
+      !result ||
+      !result.success
+    ) {
+
+      throw new Error(
+        result?.error ||
+        "Payment submission failed."
+      );
+
+    }
+
+
+    /*
+     * Refresh registration information.
+     */
+
+    showStatus(
+      "lookupPaymentStatus",
+      "success",
+      "Payment details have been submitted successfully. Your payment is now being processed."
+    );
+
+
+    /*
+     * Update displayed status.
+     */
+
+    $("retrievedPaymentStatus")
+      .textContent =
+      "PAYMENT DETAILS SUBMITTED";
+
+
+    /*
+     * Clear upload fields.
+     */
+
+    $("lookupUtr")
+      .value = "";
+
+    $("lookupScreenshot")
+      .value = "";
+
+
+  } catch (error) {
+
+    console.error(
+      "Payment submission error:",
+      error
+    );
+
+    showStatus(
+      "lookupPaymentStatus",
+      "error",
+      error.message ||
+      "Unable to submit payment details."
+    );
+
+  } finally {
+
+    setLoading(
+      false
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   COPY UPI FROM LOOKUP
+   ========================================================= */
+
+async function copyLookupUpi() {
+
+  try {
+
+    await navigator.clipboard.writeText(
+      CONFIG.UPI_ID
+    );
+
+    $("lookupCopyUpi")
+      .textContent =
+      "Copied ✓";
+
+    setTimeout(
+      () => {
+
+        $("lookupCopyUpi")
+          .textContent =
+          "Copy UPI ID";
+
+      },
+      1800
+    );
+
+  } catch {
+
+    alert(
+      "UPI ID: " +
+      CONFIG.UPI_ID
+    );
+
+  }
+
+}
 
   </script>
 
