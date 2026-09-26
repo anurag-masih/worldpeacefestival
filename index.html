@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Color Palette inspired by the artwork */
       --space-dark: #05050a;
       --glow-purple: #4c1d95;
       --glow-pink: #9d174d;
@@ -15,14 +14,12 @@
       --gold-light: #fef08a;
       --gold-dark: #a16207;
       
-      /* UI Colors */
       --surface-white: rgba(255, 255, 255, 0.97);
       --surface-offwhite: #f8fafc;
       --text-main: #0f172a;
       --text-muted: #475569;
       --border-light: #e2e8f0;
       
-      /* States */
       --error: #ef4444;
       --success: #10b981;
       --focus-ring: rgba(212, 175, 55, 0.3);
@@ -31,26 +28,19 @@
     * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     
     body { 
-      font-family: 'Inter', sans-serif; 
-      color: var(--text-main); 
-      background-color: var(--space-dark);
-      /* Majestic Cosmic Background CSS */
+      font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--space-dark);
       background-image: 
         radial-gradient(circle at 50% 100%, rgba(157, 23, 77, 0.4) 0%, transparent 50%),
         radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.3) 0%, transparent 70%);
-      background-attachment: fixed;
-      display: flex; flex-direction: column; align-items: center;
-      min-height: 100vh;
+      background-attachment: fixed; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
     }
     
-    /* HINDI FONT OPTIMIZATION */
     .hi { font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.6; letter-spacing: 0.2px; }
     
-    /* MODERN NAVBAR */
+    /* NAVBAR */
     .navbar { 
       width: 100%; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); 
-      padding: 15px 20px; transition: all 0.3s ease;
+      position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 20px; 
     }
     .nav-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
     .nav-links a { 
@@ -58,43 +48,47 @@
       text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; padding: 5px 10px; border-radius: 6px;
     }
     .nav-links a:hover { color: var(--gold-light); background: rgba(212, 175, 55, 0.1); }
+	
+	 /* HERO BANNER */
+    .hero-container { margin-top: 50px; width: 100%; max-width: 1200px; text-align: center; background: #000; }
+    .hero-image { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     
-    /* CSS-ONLY HERO BANNER */
-    .hero-container { 
-      margin-top: 60px; width: 100%; padding: 80px 20px 40px; text-align: center; 
-      animation: fadeDown 1s ease-out forwards;
-    }
-    .hero-presented { color: var(--gold-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    /* MAIN CONTAINER */
+    .main-container { width: 100%; max-width: 1000px; margin: 40px 20px 80px 20px; }
+    .card { background: var(--white); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px; margin-bottom: 30px; border-top: 4px solid var(--accent); }
+    
+    .section-title { color: var(--primary); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 25px; font-size: 1.6rem; font-family: 'Cinzel', serif; font-weight: 700; }
+    .bilingual-label { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.9rem; color: var(--text-muted); display: block; margin-top: 2px; }
+    
+    
+    /* HERO SECTION */
+    .hero-container { margin-top: 60px; width: 100%; padding: 80px 20px 40px; text-align: center; animation: fadeDown 1s ease-out forwards; }
+    .hero-presented { color: var(--gold-primary); font-size: 0.85rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
     .hero-title { 
-      font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 1.1;
+      font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 100; line-height: 1.1;
       background: linear-gradient(to bottom, #ffffff 30%, var(--gold-primary) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-      filter: drop-shadow(0px 4px 20px rgba(212, 175, 55, 0.3)); margin-bottom: 10px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 4px 20px rgba(212, 175, 55, 0.3)); margin-bottom: 10px;
     }
     .hero-subtitle { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 4vw, 2rem); color: #e2e8f0; font-weight: 600; letter-spacing: 1px; margin-bottom: 25px; }
     .hero-date { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(212, 175, 55, 0.3); padding: 12px 25px; border-radius: 100px; color: white; font-weight: 500; font-size: 1rem; }
 
-    /* LAYOUT & MODERN CARDS */
+    /* LAYOUT & CARDS */
     .main-container { width: 100%; max-width: 900px; padding: 0 15px; margin-bottom: 80px; }
     .card { 
       background: var(--surface-white); border-radius: 20px; padding: 40px; margin-bottom: 30px; 
       box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.6);
       opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .card:nth-child(2) { animation-delay: 0.1s; }
-    .card:nth-child(3) { animation-delay: 0.2s; }
     
     .section-title { 
       font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 700; 
       color: var(--space-dark); border-bottom: 2px solid var(--border-light); padding-bottom: 12px; margin-bottom: 25px; 
     }
     
-    /* NOTICE STYLES */
     .deadline-badge { background: #fee2e2; color: #991b1b; padding: 8px 16px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; border: 1px solid #fca5a5; display: inline-block; margin-bottom: 20px; }
     .notice-text { font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; color: var(--text-main); }
     .highlight-red { color: #dc2626; font-weight: 600; background: #fef2f2; padding: 2px 6px; border-radius: 4px; }
     
-    /* SCHEDULE GRID */
     .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; background: var(--surface-offwhite); padding: 20px; border-radius: 12px; margin: 25px 0; border: 1px solid var(--border-light); }
     .stat-item { text-align: center; }
     .stat-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; margin-bottom: 5px; }
@@ -105,7 +99,6 @@
     .form-group { position: relative; margin-bottom: 20px; }
     .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
     
-    /* Prevent iOS Zoom by forcing 16px font */
     input, select { 
       width: 100%; padding: 14px 16px; font-size: 16px; font-family: 'Inter', sans-serif;
       background: var(--surface-offwhite); border: 1.5px solid var(--border-light); border-radius: 10px;
@@ -117,37 +110,31 @@
     /* LIVE VALIDATION STYLES */
     .input-invalid { border-color: var(--error) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ef4444'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; }
     .input-valid { border-color: var(--success) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2310b981'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; }
-    .error-msg { display: none; color: var(--error); font-size: 0.8rem; font-weight: 600; margin-top: 6px; animation: fadeDown 0.2s ease-out; }
+    .error-msg { display: none; color: var(--error); font-size: 0.8rem; font-weight: 600; margin-top: 6px; }
     .input-invalid ~ .error-msg { display: block; }
 
     /* PARTICIPANT CARDS */
     .participant-card { background: #fff; border: 1px solid var(--border-light); border-radius: 12px; padding: 25px; margin-bottom: 25px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: 0.3s; }
-    .participant-card:hover { border-color: rgba(212, 175, 55, 0.3); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
     .participant-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px dashed var(--border-light); padding-bottom: 12px; }
     .participant-header h3 { font-size: 1.1rem; color: var(--space-dark); }
     .remove-btn { background: #fee2e2; color: #dc2626; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
     .remove-btn:hover { background: #fca5a5; }
 
-    /* CUSTOM CHECKBOX */
     .checkbox-container { display: flex; gap: 15px; align-items: flex-start; padding: 20px; background: #f8fafc; border: 1px solid var(--border-light); border-radius: 10px; cursor: pointer; transition: 0.2s; margin: 25px 0; }
     .checkbox-container:hover { border-color: var(--gold-primary); background: #fff; }
     .checkbox-container input { width: 22px; height: 22px; accent-color: var(--gold-primary); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
     .checkbox-text { font-size: 0.95rem; font-weight: 500; color: var(--text-main); }
     
-    /* BUTTONS */
     .btn { display: block; width: 100%; background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: white; border: none; padding: 18px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 10px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
     .btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
-    .btn:active:not(:disabled) { transform: translateY(0); }
     .btn:disabled { background: var(--border-light); color: var(--text-muted); cursor: not-allowed; box-shadow: none; transform: none; }
     .btn-outline { background: transparent; color: var(--space-dark); border: 2px dashed var(--border-light); box-shadow: none; margin-top: 10px; }
     .btn-outline:hover { border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.05); }
 
-    /* SUMMARY */
     .summary-box { background: var(--space-dark); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 30px 0; position: relative; overflow: hidden; }
     .summary-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold-primary), var(--glow-purple)); }
     .summary-box span { color: var(--gold-light); font-weight: 900; font-size: 1.5rem; }
 
-    /* LOADER & ANIMATIONS */
     #loaderOverlay { display: none; position: fixed; inset: 0; background: rgba(5, 5, 10, 0.9); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; flex-direction: column; color: white; }
     .spinner { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--gold-primary); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px; }
     
@@ -157,14 +144,12 @@
     
     .hidden { display: none !important; }
 
-    /* MOBILE POLISH */
     @media (max-width: 600px) {
       .card { padding: 25px 20px; border-radius: 16px; }
       .participant-card { padding: 20px 15px; }
       .hero-container { padding: 80px 15px 30px; }
       .nav-links { gap: 10px; }
       .nav-links a { font-size: 0.75rem; padding: 5px; }
-      input, select { padding: 12px 14px; }
     }
   </style>
 </head>
@@ -180,10 +165,7 @@
 </nav>
 
 <div class="hero-container">
-  <div class="hero-presented hi">उ०प्र० पास्टर्स एसोसिएशन एवं बेथेस्डा फैलोशिप ट्रस्ट और जी०एफ० आई०एम० की प्रस्तुति</div>
-  <h1 class="hero-title">WORLD PEACE<br>FESTIVAL 2026</h1>
-  <div class="hero-subtitle hi">पवित्र आत्मा की सरकार</div>
-  <div class="hero-date">🗓️ 8-9 October 2026 &nbsp;|&nbsp; 📍 Lucknow, U.P.</div>
+  <img src="Gemini_Generated_Image_mm4cxwmm4cxwmm4c.png" alt="World Peace Festival 2026 - Government of the Holy Spirit" class="hero-image">
 </div>
 
 <div class="main-container">
@@ -196,24 +178,25 @@
     </div>
     
     <p class="notice-text">
-      <strong>This meeting is only for Pastors, Evangelists and Church Leaders. There will be NO SPOT REGISTRATION.</strong><br>
-      <span class="hi" style="color: var(--text-muted);">यह मीटिंग केवल पादरियों, प्रचारकों और चर्च के अगुआओं के लिए है। मौके पर कोई पंजीकरण नहीं होगा।</span>
+      <strong>This meeting is only for  Leaders. There will be NO SPOT REGISTRATION.</strong><br>
+      <span class="hi" style="color: var(--text-muted);">यह मीटिंग केवल प्रथना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। मौके पर कोई पंजीकरण नहीं होगा।</span>
     </p>
-    
     <p class="notice-text">
-      <strong>How to register:</strong> Add all members of your group to the form below and submit. You will receive a 5-digit Temporary ID. Make a single payment via your UPI app, enter your Temp ID below, and upload the screenshot. Upon verification, you will receive your Permanent Passes.
+      <strong>How to register:</strong>First agree to the Important Informtion, then the registration form will open up. YOu will be asked to fill the detail of person filling the form, Just add name and mobile number. Note: You will again have to add your details in the Participants Details. Add all members of your group one by one and fill the form below and submit. You will receive a 5-digit Temporary ID. Make a single payment via your UPI app, enter your Temp ID below, and upload the screenshot. You can check your status back again, Upon verification, you will receive your Confirmation ID.
+    </p>
+	  <span class="hi" style="color: var(--text-muted);">सबसे पहले ज़रूरी जानकारी से सहमत हों, फिर रजिस्ट्रेशन फ़ॉर्म खुल जाएगा। आपसे फ़ॉर्म भरने वाले व्यक्ति की जानकारी मांगी जाएगी; बस नाम और मोबाइल नंबर डालें। ध्यान दें: आपको प्रतिभागियों की जानकारी में भी अपनी जानकारी दोबारा डालनी होगी। अपने ग्रुप के सभी सदस्यों की जानकारी एक-एक करके जोड़ें, नीचे दिया गया फ़ॉर्म भरें और सबमिट करें। आपको 5 अंकों की एक टेम्पररी ID मिलेगी। अपने UPI ऐप से सब का एक बार में पेमेंट करें, नीचे अपनी टेम्पररी ID डालें और उसका स्क्रीनशॉट अपलोड करें। आप बाद में अपना स्टेटस चेक कर सकते हैं; वेरिफिकेशन के बाद आपको कन्फर्मेशन ID मिल जाएगी।</span>
     </p>
 
     <p class="notice-text highlight-red">
-      Please carry a valid Government Photo ID card. Children below 18 years of age will not be permitted.<br>
-      <span class="hi" style="color: #991b1b; font-weight: 500;">कृपया अपने साथ एक वैध फोटो पहचान पत्र लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी।</span>
+      Please carry your Adhaar card. Children below 18 years of age will not be permitted.<br>
+      <span class="hi" style="color: #991b1b; font-weight: 500;">कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी।</span>
     </p>
 
     <div class="stats-grid">
-      <div class="stat-item"><div class="stat-label">Reporting Time</div><div class="stat-val">8 Oct — 9:00 AM</div></div>
-      <div class="stat-item"><div class="stat-label">Meeting Begins</div><div class="stat-val">8 Oct — 10:00 AM</div></div>
-      <div class="stat-item"><div class="stat-label">Fee / Person</div><div class="stat-val">₹300</div></div>
-      <div class="stat-item"><div class="stat-label">Age Limit</div><div class="stat-val">18+ Years</div></div>
+      <div class="stat-item"><div class="stat-label">Reporting Time - पहुँचने का समय</div><div class="stat-val">8 Oct — 9:00 AM</div></div>
+      <div class="stat-item"><div class="stat-label">Meeting Begins - सभा शुरू होने का समय</div><div class="stat-val">8 Oct — 10:00 AM</div></div>
+      <div class="stat-item"><div class="stat-label">Fee/Person - प्रति व्यक्ति शुल्क</div><div class="stat-val">₹300</div></div>
+      <div class="stat-item"><div class="stat-label">Age Limit - आयु सीमा</div><div class="stat-val">18+</div></div>
     </div>
 
     <label class="checkbox-container">
@@ -230,17 +213,17 @@
     
     <!-- Section 1 -->
     <div class="card" id="register">
-      <h2 class="section-title">1. Primary Contact <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्राथमिक संपर्क</span></h2>
+      <h2 class="section-title">Leader filling the Form <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ फार्म भरने वाले अगुआ का नाम</span></h2>
       <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">Details of the person completing this registration.</p>
       
       <div class="grid">
         <div class="form-group">
-          <label>Full Name *</label>
+          <label>Full Name/पूरा नाम *</label>
           <input type="text" id="regName" placeholder="Name" oninput="validateLive(this, 'text')" required>
           <span class="error-msg">Name is required.</span>
         </div>
         <div class="form-group">
-          <label>Mobile / WhatsApp Number *</label>
+          <label>WhatsApp Number/वव्हात्सेप्प नंबर *</label>
           <input type="tel" id="regMobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" oninput="validateLive(this, 'mobile')" required>
           <span class="error-msg">Must be exactly 10 digits.</span>
         </div>
@@ -249,14 +232,14 @@
 
     <!-- Section 2 -->
     <div class="card">
-      <h2 class="section-title">2. Participant Details <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्रतिभागी विवरण</span></h2>
+      <h2 class="section-title">1. Participant Details <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्रतिभागी विवरण</span></h2>
       <div id="participantsContainer"></div>
-      <button class="btn btn-outline" onclick="addParticipant()">+ Add Another Participant</button>
+      <button class="btn btn-outline" onclick="addParticipant()">+ To Add Another Participant click here / अगले प्रतिभागी को जोड़ने के लिए यहाँ दबाएँ</button>
     </div>
 
     <!-- Confirmation Section -->
     <div class="card">
-      <h2 class="section-title">3. Confirmation <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ पुष्टि</span></h2>
+      <h2 class="section-title">2. Declaration <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ घोषणा</span></h2>
       
       <p class="notice-text" style="font-size: 0.95rem;">I confirm the information provided is correct. If there are changes, organizers will be informed. Participation is not due to pressure or inducement.<br>
       <span class="hi" style="color: var(--text-muted);">मैं पुष्टि करता/करती हूँ कि जानकारी सही है। योजनाओं में बदलाव पर आयोजकों को सूचित किया जाएगा।</span></p>
@@ -270,22 +253,22 @@
       </label>
 
       <div class="summary-box">
-        Participants: <span id="summaryCount">0</span><br>
-        <div style="font-size: 0.95rem; font-weight: normal; margin: 10px 0; color: rgba(255,255,255,0.7);">Fee / Person: ₹<span class="disp-fee" style="font-size: 1rem; color: white;">300</span></div>
-        Total Registration Fee: ₹<span id="summaryAmount">0</span>
+        Participants/प्रतिभागी: <span id="summaryCount">0</span><br>
+        <div style="font-size: 0.95rem; font-weight: normal; margin: 10px 0; color: rgba(255,255,255,0.7);">Fee / Person/प्रति व्यक्ति शुल्क: ₹<span class="disp-fee" style="font-size: 1rem; color: white;">300</span></div>
+        Total Registration Fee/कुल पंजीकरण शुल्क: ₹<span id="summaryAmount">0</span>
       </div>
 
-      <button class="btn" id="btnSubmitReg" onclick="submitRegistration()" disabled>Proceed to Payment</button>
+      <button class="btn" id="btnSubmitReg" onclick="submitRegistration()" disabled>Proceed to Payment/भुगतान करें</button>
     </div>
   </div>
 
   <!-- PAYMENT & UPLOAD SECTION -->
   <div class="card" id="payment">
-    <h2 class="section-title">Payment Verification</h2>
+    <h2 class="section-title">Payment Verification/भुगतान जचें</h2>
     
     <div class="grid" style="margin-bottom: 25px;">
       <div class="form-group">
-        <label>Temporary ID (5 Characters)</label>
+        <label>Temporary ID/ टेम्पररी आईडी </label>
         <input type="text" id="payTempId" placeholder="e.g. A9X2B" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="validateLive(this, 'text')">
         <span class="error-msg">Temporary ID is required.</span>
       </div>
@@ -302,18 +285,18 @@
       
       <div style="text-align: center; margin: 30px 0;">
         <a id="upiAppBtn" href="#" class="btn" style="background: var(--success); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
-          Pay Securely via UPI App
+          Pay Securely via UPI App/ यूपीआई एप्प से भुगतान करें
         </a>
       </div>
 
       <div class="grid">
         <div class="form-group">
-          <label>12-Digit UPI Reference (UTR) *</label>
+          <label>12-Digit UPI Reference/ पेमेंट आईडी डालें*</label>
           <input type="number" id="payUtr" placeholder="e.g. 325412345678" inputmode="numeric" oninput="validateLive(this, 'utr')" required>
           <span class="error-msg">Must be at least 6 digits.</span>
         </div>
         <div class="form-group">
-          <label>Upload Screenshot (JPG/PNG) *</label>
+          <label>Upload Screenshot/स्क्रीनशॉट अपलोड करें *</label>
           <input type="file" id="payScreenshot" accept="image/*" onchange="compressImage(event)" style="padding: 10px;" required>
           <div id="compressMsg" style="font-size: 0.85rem; color: var(--success); margin-top: 8px; font-weight: 600;"></div>
         </div>
@@ -379,11 +362,9 @@
     let isValid = true;
     const val = input.value.trim();
     
-    // Reset classes
     input.classList.remove('input-invalid', 'input-valid');
 
     if (val.length === 0) {
-      // Empty field is handled by 'required' check on submit, remove icons for clean UI while typing
       return false;
     }
 
@@ -392,7 +373,7 @@
     else if (type === 'age') { isValid = val >= 18 && val <= 120; } 
     else if (type === 'utr') { isValid = val.length >= 6 && /^\d+$/.test(val); }
     else if (type === 'text') { isValid = val.length >= 2; }
-    else if (type === 'select') { isValid = val !== 'Select' && val !== ''; }
+    else if (type === 'select') { isValid = val !== 'Select Option' && val !== ''; }
 
     if (isValid) {
       input.classList.add('input-valid');
@@ -404,7 +385,7 @@
 
   function validateAllInContainer(containerSelector) {
     let allValid = true;
-    const inputs = document.querySelectorAll(`${containerSelector} input[required], ${containerSelector} select`);
+    const inputs = document.querySelectorAll(`${containerSelector} input[required], ${containerSelector} select[required]`);
     
     inputs.forEach(input => {
       let type = 'text';
@@ -413,7 +394,7 @@
       if (input.type === 'number' && input.classList.contains('p-age')) type = 'age';
       if (input.tagName.toLowerCase() === 'select') type = 'select';
       
-      if (input.value.trim() === '') {
+      if (input.value.trim() === '' || input.value === 'Select Option') {
         input.classList.add('input-invalid');
         allValid = false;
       } else if (!validateLive(input, type)) {
@@ -452,45 +433,45 @@
         
         <div class="grid">
           <div class="form-group">
-            <label>Full Name *</label>
+            <label>Full Name/पूरा नाम *</label>
             <input type="text" class="p-name" placeholder="Name on ID" oninput="validateLive(this, 'text')" required>
-            <span class="error-msg">Name is required.</span>
+            <span class="error-msg">Name is required. नाम जरूरी है</span>
           </div>
           <div class="form-group">
-            <label>Age (18+) *</label>
+            <label>Age/आयु(18+) *</label>
             <input type="number" class="p-age" min="18" placeholder="e.g. 35" oninput="validateLive(this, 'age')" required>
             <span class="error-msg">Must be 18 or older.</span>
           </div>
           <div class="form-group">
-            <label>Father/Husband Name</label>
+            <label>Father's/Husband's Name/पिता/पति का नाम *</label>
             <input type="text" class="p-fhname" placeholder="Optional">
           </div>
           <div class="form-group">
-            <label>Mobile Number *</label>
+            <label>Mobile Number/मोबाइल नम्बर *</label>
             <input type="tel" class="p-mobile" placeholder="10 digits" maxlength="10" inputmode="numeric" oninput="validateLive(this, 'mobile')" required>
             <span class="error-msg">Must be exactly 10 digits.</span>
           </div>
           <div class="form-group">
-            <label>Govt ID Number (Aadhaar) *</label>
+            <label>Aadhaar No./आधार नम्बर *</label>
             <input type="text" class="p-aadhaar" maxlength="12" inputmode="numeric" placeholder="12-digit number" oninput="validateLive(this, 'aadhaar')" required>
             <span class="error-msg">Must be exactly 12 digits.</span>
           </div>
           <div class="form-group">
-            <label>District *</label>
+            <label>District/जिला *</label>
             <input type="text" class="p-dist" placeholder="e.g. Lucknow" oninput="validateLive(this, 'text')" required>
             <span class="error-msg">District is required.</span>
           </div>
           <div class="form-group">
-            <label>State *</label>
+            <label>State/प्रदेश *</label>
             <input type="text" class="p-state" value="Uttar Pradesh" oninput="validateLive(this, 'text')" required>
           </div>
           <div class="form-group">
-            <label>Church / Ministry *</label>
+            <label>Church/कलिसिया का नाम *</label>
             <input type="text" class="p-church" oninput="validateLive(this, 'text')" required>
             <span class="error-msg">Church is required.</span>
           </div>
           <div class="form-group">
-            <label>Designation *</label>
+            <label>Designation/पद *</label>
             <select class="p-desig" onchange="validateLive(this, 'select')" required>
               <option value="">Select Option</option>
               <option value="Pastor">Pastor</option>
@@ -501,22 +482,22 @@
             <span class="error-msg">Please select a designation.</span>
           </div>
           <div class="form-group">
-            <label>Recommended By (Pastor) *</label>
+            <label>Recommended By (Pastor)/शिफारिश करता का नाम (पास्टर) *</label>
             <input type="text" class="p-rec" oninput="validateLive(this, 'text')" required>
             <span class="error-msg">Recommender is required.</span>
           </div>
           <div class="form-group">
-            <label>Accommodation Required?</label>
+            <label>Accommodation Required/आवास चाहिए?</label>
             <select class="p-acc"><option value="Yes">Yes / हाँ</option><option value="No">No / नहीं</option></select>
           </div>
           <div class="form-group">
-            <label>Food Preference</label>
+            <label>Food Preference/खाने की पसंद</label>
             <select class="p-food"><option value="Veg">Veg</option><option value="Non Veg">Non Veg</option></select>
           </div>
-          <div class="form-group"><label>Expected Arrival Date</label><input type="date" class="p-arrD"></div>
-          <div class="form-group"><label>Expected Arrival Time</label><input type="time" class="p-arrT"></div>
-          <div class="form-group"><label>Expected Departure Date</label><input type="date" class="p-depD"></div>
-          <div class="form-group"><label>Expected Departure Time</label><input type="time" class="p-depT"></div>
+          <div class="form-group"><label>Arrival Date/आने की तारीख</label><input type="date" class="p-arrD"></div>
+          <div class="form-group"><label>Arrival Time/आने का समय </label><input type="time" class="p-arrT"></div>
+          <div class="form-group"><label>Departure Date/जाने की तारीख </label><input type="date" class="p-depD"></div>
+          <div class="form-group"><label>Departure Time/जाने का समय</label><input type="time" class="p-depT"></div>
         </div>
       </div>
     `;
@@ -680,7 +661,7 @@
     hideLoader();
   }
 
-async function checkStatus() {
+  async function checkStatus() {
     const tempIdInput = document.getElementById('statusTempId');
     if (!tempIdInput.value.trim()) return alert("Please enter your Temporary ID");
 
@@ -705,7 +686,7 @@ async function checkStatus() {
               <p style="margin-top: 10px; color: #15803d;">Please save your Permanent Passes for entry.</p>
               
               <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 20px; text-align: left;">
-                ${data.data.participants.map(p => `
+                ${data.data.participants.map((p, i) => `
                   <div style="font-size: 1.1rem; font-family: monospace; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding: 15px 0; display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: var(--text-main); font-family: 'Inter', sans-serif;">${p.name}</span> 
                     <span style="color: var(--space-dark); background: var(--gold-light); padding: 5px 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(212,175,55,0.2);">${p.id}</span>
