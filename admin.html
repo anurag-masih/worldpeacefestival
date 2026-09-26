@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WPF26 | Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #0f172a; --accent: #0ea5e9; --bg: #f8fafc; --success: #10b981; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 20px; color: var(--primary); }
+    .container { max-width: 1000px; margin: auto; }
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    h1, h2 { margin-top: 0; }
+    input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+    button { background: var(--accent); color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #0284c7; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 8px; overflow: hidden; }
+    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+    th { background: var(--primary); color: white; font-weight: 600; }
+    tr:hover { background: #f1f5f9; }
+    
+    .badge { background: #fef3c7; color: #b45309; padding: 5px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+    .btn-confirm { background: var(--success); font-size: 0.9rem; padding: 8px 15px; }
+    .btn-confirm:hover { background: #059669; }
+    .screenshot-link { color: var(--accent); text-decoration: none; font-weight: bold; }
+    
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- LOGIN VIEW -->
+  <div id="loginView" class="card" style="max-width: 400px; margin: 100px auto; text-align: center;">
+    <h2>Admin Login</h2>
+    <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+    <button onclick="login()" style="width: 100%;">Secure Login</button>
+    <p id="loginMsg" style="color: red; font-size: 0.9rem;"></p>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="dashboardView" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h1>WPF26 Payment Verification</h1>
+      <button onclick="fetchPending()" style="background: var(--primary);">↻ Refresh List</button>
+    </div>
+
+    <div class="card" style="padding: 0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Temp ID</th>
+            <th>Primary Contact</th>
+            <th>Group Size</th>
+            <th>Amount</th>
+            <th>Submitted UTR</th>
+            <th>Screenshot</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="7" style="text-align: center; padding: 30px;">Loading pending payments...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  // UPDATE THIS URL TO YOUR NEW ACTIVE DEPLOYMENT URL
+  const API_URL = "https://script.google.com/macros/s/AKfycbwWb-y28Z90lo230O_6m0Ioou57DTvK9ivAPC7GgHfN3TfECEyOQ5FLsd7HXDu9_OpF/exec"; 
+  let authToken = sessionStorage.getItem('wpf26_admin_token');
+
+  window.onload = () => {
+    if (authToken) {
+      document.getElementById('loginView').classList.add('hidden');
+      document.getElementById('dashboardView').classList.remove('hidden');
+      fetchPending();
+    }
+  };
+
+  async function login() {
+    const pass = document.getElementById('adminPassword').value;
+    const msg = document.getElementById('loginMsg');
+    msg.innerText = "Authenticating...";
+    
+    try {
+      const res = await fetch(API_URL, { 
+        method: 'POST', 
+        body: JSON.stringify({ action: 'adminLogin', password: pass }),
+        headers: {'Content-Type': 'text/plain;charset=utf-8'}
+      });
+      const data = await res.json();
+      
+      if (data.ok) {
+        authToken = data.data.token;
+        sessionStorage.setItem('wpf26_admin_token', authToken);
+        document.getElementById('loginView').classList.add('hidden');
+        document.getElementById('dashboardView').classList.remove('hidden');
+        fetchPending();
+      } else {
+        msg.innerText = "Invalid Password.";
+      }
+    } catch (e) { msg.innerText = "Network Error."; }
+  }
+
+  async function fetchPending() {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 30px;">Fetching records...</td></tr>';
+    
+    try {
+      const res = await fetch(API_URL, { 
+        method: 'POST', 
+        body: JSON.stringify({ action: 'adminList', token: authToken }),
+        headers: {'Content-Type': 'text/plain;charset=utf-8'}
+      });
+      const data = await res.json();
+      
+      if (data.ok) {
+        if (data.data.list.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 30px; color: #10b981; font-weight: bold;">All caught up! No pending payments.</td></tr>';
+          return;
+        }
+        
+        tbody.innerHTML = data.data.list.map(reg => `
+          <tr id="row-${reg.tempId}">
+            <td style="font-family: monospace; font-weight: bold;">${reg.tempId}</td>
+            <td>${reg.name}</td>
+            <td><span class="badge">${reg.count} Pax</span></td>
+            <td>₹${reg.amount}</td>
+            <td style="font-family: monospace;">${reg.utr}</td>
+            <td><a href="${reg.screenshot}" target="_blank" class="screenshot-link">View Image ↗</a></td>
+            <td><button class="btn-confirm" onclick="confirmPayment('${reg.tempId}')">Verify & Confirm</button></td>
+          </tr>
+        `).join('');
+      } else {
+        tbody.innerHTML = `<tr><td colspan="7" style="color: red; text-align: center;">Session expired. Please refresh and log in again.</td></tr>`;
+      }
+    } catch (e) {
+      tbody.innerHTML = `<tr><td colspan="7" style="color: red; text-align: center;">Network Error.</td></tr>`;
+    }
+  }
+
+  async function confirmPayment(tempId) {
+    if (!confirm(`Are you sure you want to verify the payment for ${tempId}? This will generate Permanent IDs.`)) return;
+    
+    const row = document.getElementById(`row-${tempId}`);
+    row.style.opacity = '0.5';
+    
+    try {
+      const res = await fetch(API_URL, { 
+        method: 'POST', 
+        body: JSON.stringify({ action: 'adminConfirm', token: authToken, temporaryId: tempId }),
+        headers: {'Content-Type': 'text/plain;charset=utf-8'}
+      });
+      const data = await res.json();
+      
+      if (data.ok) {
+        row.innerHTML = `<td colspan="7" style="text-align: center; color: #10b981; font-weight: bold;">✓ Confirmed! IDs Generated: ${data.data.permanentIds.join(', ')}</td>`;
+        setTimeout(() => row.remove(), 4000);
+      } else {
+        alert("Error: " + data.error);
+        row.style.opacity = '1';
+      }
+    } catch (e) {
+      alert("Network Error.");
+      row.style.opacity = '1';
+    }
+  }
+</script>
+</body>
+</html>
