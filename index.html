@@ -282,6 +282,8 @@
         <div class="stat-item"><div class="stat-label">Amount Due</div><div class="stat-val" style="color: #b45309;">₹<span id="payAmount">0</span><div class="stat-label">UPI ID</div>
 		<img src="upiqr.jpeg" width="300" height="500">
 		</div></div>
+        
+      </div>
       
       <div style="text-align: center; margin: 30px 0;">
         <a id="upiAppBtn" href="#" class="btn" style="background: var(--success); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
@@ -444,7 +446,7 @@
           </div>
           <div class="form-group">
             <label>Father's/Husband's Name/पिता/पति का नाम *</label>
-            <input type="text" class="p-fhname">
+            <input type="text" class="p-fhname" placeholder="Optional">
           </div>
           <div class="form-group">
             <label>Mobile Number/मोबाइल नम्बर *</label>
@@ -473,13 +475,10 @@
           <div class="form-group">
             <label>Designation/पद *</label>
             <select class="p-desig" onchange="validateLive(this, 'select')" required>
+              <option value="">Select Option</option>
               <option value="Pastor">Pastor</option>
               <option value="Church Leader">Church Leader</option>
               <option value="Evangelist">Evangelist</option>
-			  <option value="Bishop">Bishop</option>
-			  <option value="National Cordinator">National Cordinator</option>
-			  <option value="State Cordinator">State Cordinator</option>
-			  <option value="District Cordinator">District Cordinator</option>
               <option value="Other">Other</option>
             </select>
             <span class="error-msg">Please select a designation.</span>
