@@ -1,380 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Peace Festival 2026 | Registration</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* =========================================================
-       VARIABLES & RESET
-       ========================================================= */
-    :root {
-      --primary: #0ea5e9;
-      --primary-hover: #0284c7;
-      --gold: #d4af37;
-      --gold-light: #fbeea0;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --error: #ef4444;
-      --success: #10b981;
-      --glass-bg: rgba(255, 255, 255, 0.95);
-      --glass-border: rgba(255, 255, 255, 0.5);
-      --space-bg: #0b0c10;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-    
-    body { 
-      font-family: 'Inter', sans-serif; 
-      color: var(--text-main);
-      background: var(--space-bg);
-      background-image: radial-gradient(circle at 50% 100%, #2b1055 0%, #0b0c10 60%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <title>WPF26 API Test Console</title>
 
-    /* =========================================================
-       NAVBAR
-       ========================================================= */
-    .navbar {
-      width: 100%;
-      background: rgba(11, 12, 16, 0.8);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      justify-content: center;
-      padding: 15px 20px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: background 0.3s, color 0.3s;
-      cursor: pointer;
-    }
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--gold);
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    /* =========================================================
-       HERO SECTION (Inspired by Poster)
-       ========================================================= */
-    .hero {
-      margin-top: 80px;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
-      width: 100%;
-      max-width: 1000px;
-      animation: fadeIn 1s ease-out;
-    }
-    .hero-presented {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: var(--gold-light);
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 900;
-      background: linear-gradient(to bottom, #fff, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 5px;
-      line-height: 1.1;
-      text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    }
-    .hero-year {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .hero-subtitle {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      font-weight: 800;
-      color: #e0f2fe;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .hero-session {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      font-weight: 600;
-      color: #fff;
-      margin-top: 10px;
-      letter-spacing: 2px;
-    }
-    .hero-date-location {
-      margin-top: 30px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #fff;
-      background: rgba(255,255,255,0.1);
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
 
-    /* =========================================================
-       MAIN CONTAINER
-       ========================================================= */
-    .main-container {
-      width: 100%;
-      max-width: 900px;
-      background: var(--glass-bg);
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      margin: 40px 20px 80px 20px;
-      overflow: hidden;
-      position: relative;
-    }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
 
-    .section { display: none; padding: 40px; }
-    .section.active { display: block; animation: fadeInUp 0.4s ease-out forwards; }
+        h1 {
+            margin-bottom: 5px;
+        }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .subtitle {
+            color: #666;
+            margin-top: 0;
+        }
 
-    /* =========================================================
-       INSTRUCTIONS SECTION
-       ========================================================= */
-    .instructions-box {
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 30px;
-    }
-    .instructions-box h3 { margin-bottom: 15px; color: var(--primary); }
-    .instructions-box ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-muted); line-height: 1.8; }
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #f1f5f9;
-      padding: 15px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .checkbox-container input { width: 20px; height: 20px; cursor: pointer; }
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-    /* =========================================================
-       FORM ELEMENTS
-       ========================================================= */
-    .btn { 
-      display: inline-block; background: var(--primary); color: white; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 10px; cursor: pointer; text-align: center; width: 100%; transition: all 0.3s; 
-    }
-    .btn:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-2px); }
-    .btn:disabled { background: #cbd5e1; cursor: not-allowed; }
-    .btn-secondary { background: transparent; color: var(--text-main); border: 2px solid #cbd5e1; margin-top: 15px; }
-    .btn-secondary:hover { background: #f1f5f9; }
-    
-    .btn-upi {
-      background: #10b981;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .btn-upi:hover { background: #059669; }
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            background: #ddd;
+        }
 
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-    input[type="text"], input[type="tel"], input[type="number"], input[type="date"], input[type="time"], select { 
-      width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; font-family: 'Inter', sans-serif; background: #fff; transition: border 0.2s;
-    }
-    input:focus, select:focus { outline: none; border-color: var(--primary); }
+        .status.success {
+            background: #d7f5df;
+            color: #146c2e;
+        }
 
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
-    @media (max-width: 768px) { .grid, .grid-3 { grid-template-columns: 1fr; } }
+        .status.error {
+            background: #ffdede;
+            color: #a40000;
+        }
 
-    /* =========================================================
-       PARTICIPANT CARDS
-       ========================================================= */
-    .participant-card { 
-      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; position: relative; 
-    }
-    .participant-card h3 { margin-bottom: 20px; color: var(--primary); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
-    .remove-btn { position: absolute; top: 20px; right: 20px; background: #fee2e2; border: none; color: var(--error); font-weight: 600; padding: 5px 12px; border-radius: 15px; cursor: pointer; }
-    
-    .summary-box { background: #fff; border: 2px dashed #cbd5e1; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 25px; font-size: 1.1rem; }
-    .summary-box span { color: var(--primary); font-weight: bold; font-size: 1.3rem; }
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
 
-    /* =========================================================
-       PAYMENT & SUCCESS
-       ========================================================= */
-    .payment-info { background: #f0f9ff; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 30px; border: 1px solid #bae6fd; }
-    .amount { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
-    .upload-box { border: 2px dashed #94a3b8; padding: 30px 20px; text-align: center; border-radius: 12px; margin-bottom: 25px; cursor: pointer; background: #fff; }
+        button:hover {
+            background: #444;
+        }
 
-    /* =========================================================
-       UTILITIES & ALERTS
-       ========================================================= */
-    .alert { padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; text-align: center; }
-    .alert-error { background: #fef2f2; color: var(--error); border: 1px solid #fecaca; }
-    
-    #loader { display: none; text-align: center; padding: 80px 20px; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--glass-bg); z-index: 10; border-radius: 24px; align-content: center; }
-    .spinner { display: inline-block; width: 50px; height: 50px; border: 4px solid #e2e8f0; border-radius: 50%; border-top-color: var(--primary); animation: spin 1s infinite; margin-bottom: 15px; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #111;
+            color: #eee;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            min-height: 100px;
+        }
+
+        .participant {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .participant h3 {
+            margin-top: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        .test-result {
+            margin-top: 15px;
+        }
+
+        .small {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .danger {
+            background: #a40000;
+        }
+
+        .danger:hover {
+            background: #c00000;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 15px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="nav-links">
-    <a onclick="showScreen('screen-instructions')">Fill Form</a>
-    <a onclick="showScreen('screen-lookup')">Pending Payment</a>
-    <a href="#footer">Contact</a>
-  </div>
-</nav>
+<div class="container">
 
-<!-- HERO SECTION -->
-<div class="hero">
-  <div class="hero-presented">Presented by U.P. Pastors Association, Bethesda Fellowship Trust, and G.F.I.M.</div>
-  <div class="hero-title">WORLD PEACE FESTIVAL</div>
-  <div class="hero-year">2026</div>
-  <div class="hero-subtitle">Government of the Holy Spirit</div>
-  <div class="hero-session">THIRD PARLIAMENTARY SESSION</div>
-  <div class="hero-date-location">8-9 October 2026 - Lucknow, U.P.</div>
+    <h1>WPF26 API Test Console</h1>
+
+    <p class="subtitle">
+        World Peace Festival 2026 — backend/API testing only
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- CONNECTION -->
+    <!-- ========================================================= -->
+
+    <div class="card">
+
+        <h2>1. API Connection</h2>
+
+        <label>Apps Script Web App URL</label>
+
+        <input
+            id="apiUrl"
+            type="text"
+            value="YOUR_APPS_SCRIPT_WEB_APP_URL"
+            placeholder="https://script.google.com/macros/s/...../exec"
+        >
+
+        <p>
+            <span id="connectionStatus" class="status">
+                NOT TESTED
+            </span>
+        </p>
+
+        <button onclick="testHealth()">
+            Test Health
+        </button>
+
+        <button onclick="getConfig()">
+            Get Config
+        </button>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- CREATE REGISTRATION -->
+    <!-- ========================================================= -->
+
+    <div class="card">
+
+        <h2>2. Create Test Registration</h2>
+
+        <p class="small">
+            This creates a REAL registration in your Google Sheet.
+            Use fake/test participant information.
+        </p>
+
+        <div class="grid">
+
+            <div>
+                <label>Registrant Name</label>
+                <input
+                    id="registrantName"
+                    value="Test Registrant"
+                >
+            </div>
+
+            <div>
+                <label>Registrant Mobile</label>
+                <input
+                    id="registrantMobile"
+                    value="9876543210"
+                >
+            </div>
+
+        </div>
+
+
+        <h3>Participant 1</h3>
+
+        <div class="participant">
+
+            <div class="grid">
+
+                <div>
+                    <label>Full Name</label>
+                    <input
+                        id="p1Name"
+                        value="Test Participant One"
+                    >
+                </div>
+
+                <div>
+                    <label>Age</label>
+                    <input
+                        id="p1Age"
+                        type="number"
+                        value="30"
+                    >
+                </div>
+
+                <div>
+                    <label>Father / Husband Name</label>
+                    <input
+                        id="p1Father"
+                        value="Test Father"
+                    >
+                </div>
+
+                <div>
+                    <label>Mobile</label>
+                    <input
+                        id="p1Mobile"
+                        value="9876543211"
+                    >
+                </div>
+
+                <div>
+                    <label>District</label>
+                    <input
+                        id="p1District"
+                        value="Lucknow"
+                    >
+                </div>
+
+                <div>
+                    <label>State</label>
+                    <input
+                        id="p1State"
+                        value="Uttar Pradesh"
+                    >
+                </div>
+
+                <div>
+                    <label>Church / Ministry / Organization</label>
+                    <input
+                        id="p1Church"
+                        value="Test Church"
+                    >
+                </div>
+
+                <div>
+                    <label>Designation</label>
+                    <input
+                        id="p1Designation"
+                        value="Pastor"
+                    >
+                </div>
+
+                <div>
+                    <label>Recommender</label>
+                    <input
+                        id="p1Recommender"
+                        value="Test Recommender"
+                    >
+                </div>
+
+                <div>
+                    <label>Accommodation</label>
+                    <select id="p1Accommodation">
+                        <option value="NO">No</option>
+                        <option value="YES">Yes</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Food Preference</label>
+                    <select id="p1Food">
+                        <option value="VEG">Vegetarian</option>
+                        <option value="NON_VEG">Non-Vegetarian</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Arrival Date</label>
+                    <input
+                        id="p1ArrivalDate"
+                        type="date"
+                    >
+                </div>
+
+                <div>
+                    <label>Arrival Time</label>
+                    <input
+                        id="p1ArrivalTime"
+                        type="time"
+                    >
+                </div>
+
+                <div>
+                    <label>Departure Date</label>
+                    <input
+                        id="p1DepartureDate"
+                        type="date"
+                    >
+                </div>
+
+                <div>
+                    <label>Departure Time</label>
+                    <input
+                        id="p1DepartureTime"
+                        type="time"
+                    >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button onclick="createRegistration()">
+            CREATE TEST REGISTRATION
+        </button>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- LOOKUP -->
+    <!-- ========================================================= -->
+
+    <div class="card">
+
+        <h2>3. Get Registration</h2>
+
+        <label>Temporary ID</label>
+
+        <input
+            id="temporaryId"
+            placeholder="Example: WPF26-TMP-00001"
+        >
+
+        <button onclick="getRegistration()">
+            GET REGISTRATION
+        </button>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- RESULTS -->
+    <!-- ========================================================= -->
+
+    <div class="card">
+
+        <h2>API Response</h2>
+
+        <pre id="responseOutput">No API request made yet.</pre>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- TEST SUMMARY -->
+    <!-- ========================================================= -->
+
+    <div class="card">
+
+        <h2>Test Status</h2>
+
+        <div id="testSummary">
+
+            <p>
+                ⬜ Health check
+            </p>
+
+            <p>
+                ⬜ Config check
+            </p>
+
+            <p>
+                ⬜ Create registration
+            </p>
+
+            <p>
+                ⬜ Get registration
+            </p>
+
+        </div>
+
+    </div>
+
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="main-container">
-  
-  <div id="loader">
-    <div class="spinner"></div>
-    <h3 id="loaderText" style="color: var(--primary);">Processing...</h3>
-  </div>
 
-  <div id="errorBox" class="alert alert-error" style="display: none; margin: 20px; width: calc(100% - 40px);"></div>
+<script>
 
-  <!-- 1. INSTRUCTIONS SCREEN -->
-  <div id="screen-instructions" class="section active">
-    <h2 style="margin-bottom: 20px;">Delegate Registration</h2>
-    
-    <div class="instructions-box">
-      <h3>Important Instructions</h3>
-      <ul>
-        <li>Please ensure all names match your official ID.</li>
-        <li>Registration fee is <strong>₹<span id="displayFee">300</span></strong> per participant.</li>
-        <li>Keep your UPI app ready. You will be redirected to pay upon form submission.</li>
-        <li>Take a screenshot of your successful payment before returning to this page to submit your UTR.</li>
-      </ul>
-      <label class="checkbox-container">
-        <input type="checkbox" id="agreeCheckbox" onchange="toggleStartBtn()">
-        I have read and understood the instructions.
-      </label>
-    </div>
+    /*
+     * ============================================================
+     * GLOBAL STATE
+     * ============================================================
+     */
 
-    <button class="btn" id="btnStartReg" onclick="startRegistration()" disabled>Proceed to Fill Form</button>
-  </div>
+    let lastTemporaryId = null;
 
-  <!-- 2. REGISTRATION SCREEN -->
-  <div id="screen-registration" class="section">
-    <h2 style="margin-bottom: 25px;">Primary Contact Details</h2>
-    <div class="grid" style="margin-bottom: 30px;">
-      <div class="form-group"><label>Your Full Name</label><input type="text" id="regName" required></div>
-      <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="regMobile" required></div>
-    </div>
+    let tests = {
+        health: false,
+        config: false,
+        create: false,
+        get: false
+    };
 
-    <h2 style="margin-bottom: 15px;">Participant Details</h2>
-    <div id="participantsContainer"></div>
 
-    <button class="btn btn-secondary" onclick="addParticipantCard()" style="margin-bottom: 30px; border-style: dashed;">+ Add Another Participant</button>
-    
-    <div class="summary-box">
-      Total Participants: <span id="summaryCount">1</span> &nbsp;|&nbsp; Total Amount: <span>₹<span id="summaryAmount" style="display:inline;">0</span></span>
-    </div>
+    /*
+     * ============================================================
+     * HELPERS
+     * ============================================================
+     */
 
-    <button class="btn" onclick="submitRegistration()">Calculate & Proceed to Payment</button>
-    <button class="btn btn-secondary" onclick="showScreen('screen-instructions')" style="border: none;">Cancel</button>
-  </div>
+    function getApiUrl() {
 
-  <!-- 3. LOOKUP SCREEN -->
-  <div id="screen-lookup" class="section">
-    <h2 style="margin-bottom: 15px;">Complete Pending Payment</h2>
-    <p style="margin-bottom: 30px; color: var(--text-muted);">Enter your Temporary ID to lookup your registration and submit the UTR / Screenshot.</p>
-    
-    <div class="form-group">
-      <label>Temporary Registration ID</label>
-      <input type="text" id="lookupId" placeholder="e.g. WPF26-TMP-00001" style="text-transform: uppercase;">
-    </div>
-    <button class="btn" onclick="lookupRegistration()">Find Registration</button>
-  </div>
+        const url = document
+            .getElementById("apiUrl")
+            .value
+            .trim();
 
-  <!-- 4. PAYMENT SCREEN -->
-  <div id="screen-payment" class="section">
-    <h2 style="margin-bottom: 10px; text-align: center;">Complete Your Payment</h2>
-    
-    <div class="payment-info">
-      <p>Registration ID: <strong id="payTempId">...</strong></p>
-      <div class="amount">₹<span id="payAmount">0</span></div>
-      
-      <!-- DYNAMIC UPI BUTTON -->
-      <a id="upiPayButton" href="#" class="btn btn-upi" style="margin: 20px 0; display: none;">
-        <span>Pay ₹<span id="btnUpiAmount">0</span> via UPI App</span>
-      </a>
+        if (!url || url === "YOUR_APPS_SCRIPT_WEB_APP_URL") {
 
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px;">Or send manually to: <strong id="payUpiId">...</strong></p>
-    </div>
+            throw new Error(
+                "Please enter your Apps Script /exec URL first."
+            );
+        }
 
-    <div class="form-group">
-      <label>12-Digit UPI Reference Number (UTR)</label>
-      <input type="number" id="payUtr" placeholder="e.g. 325412345678" required>
-    </div>
+        return url;
+    }
 
-    <div class="form-group">
-      <label>Upload Payment Screenshot</label>
-      <div class="upload-box" onclick="document.getElementById('payScreenshot').click()">
-        <span id="uploadText" style="font-weight: 500; color: var(--primary);">Tap to upload screenshot (JPG/PNG)</span>
-        <input type="file" id="payScreenshot" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
-      </div>
-    </div>
 
-    <button class="btn" onclick="submitPayment()">Submit Payment Verification</button>
-  </div>
+    function showResponse(data) {
 
-  <!-- 5. SUCCESS SCREEN -->
-  <div id="screen-success" class="section" style="text-align: center;">
-    <div style="font-size: 60px; color: var(--success); margin-bottom: 20px;">✓</div>
-    <h2 style="margin-bottom: 15px;">Payment Submitted Successfully</h2>
-    <p>Your Registration ID is:<br><strong id="successTempId" style="font-size: 1.5rem; margin-top: 10px; display: block;"></strong></p>
-    <p style="margin-top: 20px; color: var(--text-muted);">Our team will verify the payment and confirm your seats shortly.</p>
-  </div>
+        document
+            .getElementById("responseOutput")
+            .textContent =
+            typeof data === "string"
+                ? data
+                : JSON.stringify(data, null, 2);
+    }
 
-</div>
 
-<footer id="footer" style="padding: 40px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem;">
-  World Peace Festival 2026 | Lucknow, U.P.<br>
-  For support, please contact your organization coordinator.
-</footer>
+    function showError(error) {
+
+        console.error(error);
+
+        showResponse({
+            success: false,
+            error: error.message || String(error)
+        });
+    }
+
+
+    function updateSummary() {
+
+        document.getElementById("testSummary").innerHTML = `
+
+            <p>
+                ${tests.health ? "✅" : "⬜"}
+                Health check
+            </p>
+
+            <p>
+                ${tests.config ? "✅" : "⬜"}
+                Config check
+            </p>
+
+            <p>
+                ${tests.create ? "✅" : "⬜"}
+                Create registration
+            </p>
+
+            <p>
+                ${tests.get ? "✅" : "⬜"}
+                Get registration
+            </p>
+
+        `;
+    }
+
+
+    /*
+     * ============================================================
+     * GENERIC GET
+     * ============================================================
+     */
+
+    async function apiGet(action) {
+
+        const baseUrl = getApiUrl();
+
+        const url =
+            baseUrl +
+            "?action=" +
+            encodeURIComponent(action);
+
+        const response = await fetch(url);
+
+        const text = await response.text();
+
+        let data;
+
+        try {
+
+            data = JSON.parse(text);
+
+        } catch (error) {
+
+            throw new Error(
+                "Server did not return valid JSON:\n\n" +
+                text
+            );
+        }
+
+        return data;
+    }
+
+
+    /*
+     * ============================================================
+     * GENERIC POST
+     *
+     * IMPORTANT:
+     * We intentionally do NOT set Content-Type:
+     * application/json.
+     *
+     * This helps avoid CORS preflight with Apps Script.
+     * ============================================================
+     */
+
+    async function apiPost(payload) {
+
+        const url = getApiUrl();
+
+        const response = await fetch(url, {
+
+            method: "POST",
+
+            body: JSON.stringify(payload)
+
+        });
+
+        const text = await response.text();
+
+        let data;
+
+        try {
+
+            data = JSON.parse(text);
+
+        } catch (error) {
+
+            throw new Error(
+                "Server did not return valid JSON:\n\n" +
+                text
+            );
+        }
+
+        return data;
+    }
+
+
+    /*
+     * ============================================================
+     * TEST 1 — HEALTH
+     * ============================================================
+     */
+
+    async function testHealth() {
+
+        try {
+
+            showResponse({
+                status: "Testing health..."
+            });
+
+            const data =
+                await apiGet("health");
+
+            showResponse(data);
+
+            if (data.success === true) {
+
+                tests.health = true;
+
+                document
+                    .getElementById("connectionStatus")
+                    .textContent = "CONNECTED";
+
+                document
+                    .getElementById("connectionStatus")
+                    .className =
+                    "status success";
+
+            } else {
+
+                document
+                    .getElementById("connectionStatus")
+                    .textContent = "ERROR";
+
+                document
+                    .getElementById("connectionStatus")
+                    .className =
+                    "status error";
+            }
+
+            updateSummary();
+
+        } catch (error) {
+
+            showError(error);
+
+            document
+                .getElementById("connectionStatus")
+                .textContent = "CONNECTION FAILED";
+
+            document
+                .getElementById("connectionStatus")
+                .className =
+                "status error";
+        }
+    }
+
+
+    /*
+     * ============================================================
+     * TEST 2 — CONFIG
+     * ============================================================
+     */
+
+    async function getConfig() {
+
+        try {
+
+            showResponse({
+                status: "Getting configuration..."
+            });
+
+            const data =
+                await apiGet("config");
+
+            showResponse(data);
+
+            if (data.success === true) {
+
+                tests.config = true;
+
+            }
+
+            updateSummary();
+
+        } catch (error) {
+
+            showError(error);
+
+        }
+    }
+
+
+    /*
+     * ============================================================
+     * TEST 3 — CREATE REGISTRATION
+     * ============================================================
+     */
+
+    async function createRegistration() {
+
+        try {
+
+            const participant = {
+
+                fullName:
+                    document
+                        .getElementById("p1Name")
+                        .value
+                        .trim(),
+
+                age:
+                    Number(
+                        document
+                            .getElementById("p1Age")
+                            .value
+                    ),
+
+                fatherHusbandName:
+                    document
+                        .getElementById("p1Father")
+                        .value
+                        .trim(),
+
+                mobile:
+                    document
+                        .getElementById("p1Mobile")
+                        .value
+                        .trim(),
+
+                district:
+                    document
+                        .getElementById("p1District")
+                        .value
+                        .trim(),
+
+                state:
+                    document
+                        .getElementById("p1State")
+                        .value
+                        .trim(),
+
+                churchMinistryOrganization:
+                    document
+                        .getElementById("p1Church")
+                        .value
+                        .trim(),
+
+                designation:
+                    document
+                        .getElementById("p1Designation")
+                        .value
+                        .trim(),
+
+                recommender:
+                    document
+                        .getElementById("p1Recommender")
+                        .value
+                        .trim(),
+
+                accommodation:
+                    document
+                        .getElementById("p1Accommodation")
+                        .value,
+
+                foodPreference:
+                    document
+                        .getElementById("p1Food")
+                        .value,
+
+                arrivalDate:
+                    document
+                        .getElementById("p1ArrivalDate")
+                        .value,
+
+                arrivalTime:
+                    document
+                        .getElementById("p1ArrivalTime")
+                        .value,
+
+                departureDate:
+                    document
+                        .getElementById("p1DepartureDate")
+                        .value,
+
+                departureTime:
+                    document
+                        .getElementById("p1DepartureTime")
+                        .value
+
+            };
+
+
+            const payload = {
+
+                action: "createRegistration",
+
+                registrant: {
+
+                    name:
+                        document
+                            .getElementById("registrantName")
+                            .value
+                            .trim(),
+
+                    mobile:
+                        document
+                            .getElementById("registrantMobile")
+                            .value
+                            .trim()
+
+                },
+
+                participants: [
+                    participant
+                ]
+
+            };
+
+
+            showResponse({
+
+                status: "Creating registration...",
+
+                request: payload
+
+            });
+
+
+            const data =
+                await apiPost(payload);
+
+
+            showResponse(data);
+
+
+            if (data.success === true) {
+
+                tests.create = true;
+
+
+                /*
+                 * Support the clean API contract:
+                 *
+                 * registration.temporaryId
+                 */
+
+                lastTemporaryId =
+                    data.registration &&
+                    data.registration.temporaryId;
+
+
+                if (lastTemporaryId) {
+
+                    document
+                        .getElementById("temporaryId")
+                        .value =
+                        lastTemporaryId;
+
+                }
+
+            }
+
+
+            updateSummary();
+
+
+        } catch (error) {
+
+            showError(error);
+
+        }
+
+    }
+
+
+    /*
+     * ============================================================
+     * TEST 4 — GET REGISTRATION
+     * ============================================================
+     */
+
+    async function getRegistration() {
+
+        try {
+
+            let temporaryId =
+                document
+                    .getElementById("temporaryId")
+                    .value
+                    .trim();
+
+
+            if (!temporaryId) {
+
+                temporaryId =
+                    lastTemporaryId;
+            }
+
+
+            if (!temporaryId) {
+
+                throw new Error(
+                    "Enter a temporary ID first."
+                );
+
+            }
+
+
+            const payload = {
+
+                action: "getRegistration",
+
+                temporaryId: temporaryId
+
+            };
+
+
+            showResponse({
+
+                status: "Getting registration...",
+
+                request: payload
+
+            });
+
+
+            const data =
+                await apiPost(payload);
+
+
+            showResponse(data);
+
+
+            if (data.success === true) {
+
+                tests.get = true;
+
+            }
+
+
+            updateSummary();
+
+
+        } catch (error) {
+
+            showError(error);
+
+        }
+
+    }
+
+
+    /*
+     * ============================================================
+     * INITIALIZE
+     * ============================================================
+     */
+
+    updateSummary();
+
+</script>
+
 </body>
 </html>
