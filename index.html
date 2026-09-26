@@ -401,7 +401,7 @@
       const data = await res.json();
       if (data.success) {
         eventConfig = data.config;
-        document.getElementById('displayFee').innerText = eventConfig.fee;
+        document.getElementById('displayFee').innerText = eventConfig.registrationFee;
         document.getElementById('payUpiId').innerText = eventConfig.upiId;
       }
     } catch (err) {
@@ -510,7 +510,7 @@
 
   function updateSummary() {
     const count = document.querySelectorAll('.participant-card').length;
-    const total = count * (eventConfig.fee || 300);
+    const total = count * (eventConfig.registrationFee || 300);
     document.getElementById('summaryCount').innerText = count;
     document.getElementById('summaryAmount').innerText = total;
   }
@@ -599,7 +599,10 @@
       const data = await res.json();
       
       if (data.success) {
-        if (data.registration.paymentStatus !== 'PENDING PAYMENT' && data.registration.paymentStatus !== 'ACTIVE') {
+        if (
+  data.registration.paymentStatus !== 'PENDING' &&
+  data.registration.paymentStatus !== 'SUBMITTED'
+) {
            showError(`Status is: ${data.registration.paymentStatus}. Payment cannot be submitted.`);
         } else {
           currentTempId = data.registration.temporaryId;
