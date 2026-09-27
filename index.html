@@ -201,7 +201,7 @@
 
     <label class="checkbox-container">
       <input type="checkbox" id="agreeNotice" onchange="toggleForm()">
-      <div class="checkbox-text">
+      <div class="checkbox-text"><div class="stat-val">Start Filling the Form - फार्म भरना शुरू करें</div>
         I have read and agree to the Important Information.<br>
         <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैंने महत्वपूर्ण सूचना पढ़ ली है और मैं सहमत हूँ।</span>
       </div>
@@ -264,7 +264,7 @@
 
   <!-- PAYMENT & UPLOAD SECTION -->
   <div class="card" id="payment">
-    <h2 class="section-title">Payment Verification/भुगतान जाचें</h2>
+    <h2 class="section-title">Upload QR/QR अपलोड करें</h2>
     
     <div class="grid" style="margin-bottom: 25px;">
       <div class="form-group">
@@ -430,7 +430,7 @@
         <div class="grid">
           <div class="form-group">
             <label>Full Name/पूरा नाम *</label>
-            <input type="text" class="p-name" placeholder="Name on ID" oninput="validateLive(this, 'text')" required>
+            <input type="text" class="p-name" placeholder="Name नाम" oninput="validateLive(this, 'text')" required>
             <span class="error-msg">Name is required. नाम जरूरी है</span>
           </div>
           <div class="form-group">
@@ -481,19 +481,10 @@
             <span class="error-msg">Please select a designation.</span>
           </div>
           <div class="form-group">
-            <label>Recommended By (Pastor)/शिफारिश करता का नाम (पास्टर) *</label>
+            <label>Recommended By (Pastor)/शिफारिश कर्ता का नाम (पास्टर) *</label>
             <input type="text" class="p-rec" oninput="validateLive(this, 'text')" required>
-            <span class="error-msg">Recommender is required.</span>
-          </div>
-          <div class="form-group">
-            <label>Accommodation Required/आवास चाहिए?</label>
-            <select class="p-acc"><option value="Yes">Yes / हाँ</option><option value="No">No / नहीं</option></select>
-          </div>
-          <div class="form-group">
-            <label>Food Preference/खाने की पसंद</label>
-            <select class="p-food"><option value="Veg">Veg</option><option value="Non Veg">Non Veg</option></select>
-          </div>
-          <div class="form-group"><label>Arrival Date/आने की तारीख</label><input type="date" class="p-arrD"></div>
+            <span class="error-msg">पास्टर का नाम</span>
+            <div class="form-group"><label>Arrival Date/आने की तारीख</label><input type="date" class="p-arrD"></div>
           <div class="form-group"><label>Arrival Time/आने का समय </label><input type="time" class="p-arrT"></div>
           <div class="form-group"><label>Departure Date/जाने की तारीख </label><input type="date" class="p-depD"></div>
           <div class="form-group"><label>Departure Time/जाने का समय</label><input type="time" class="p-depT"></div>
