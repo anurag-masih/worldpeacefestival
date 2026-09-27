@@ -577,20 +577,52 @@
     hideLoader();
   }
 
-  function loadPaymentDetails() {
-    const payInput = document.getElementById('payTempId');
-    if (!payInput.value.trim()) return alert("Please enter your Temporary ID");
-    
-    const amount = sessionStorage.getItem('WPF26_AMT') || (document.querySelectorAll('.participant-card').length * eventConfig.fee);
-    if (amount == 0) return alert("Please complete registration first or enter a valid ID.");
-    
-    document.getElementById('paymentDetails').classList.remove('hidden');
-    document.getElementById('payAmount').innerText = amount;
-    
-    const tempId = payInput.value.trim().toUpperCase();
-    const upiLink = `upi://pay?pa=${encodeURIComponent(eventConfig.upiId)}&pn=${encodeURIComponent(eventConfig.receiver)}&am=${amount}&cu=INR&tn=${encodeURIComponent(tempId)}`;
-    document.getElementById('upiAppBtn').href = upiLink;
+async function loadPaymentDetails() {
+  const payInput = document.getElementById('payTempId');
+  const tempId = payInput.value.trim().toUpperCase();
+  
+  if (!tempId || tempId.length < 5) {
+    alert("Please enter a valid 5-character Temporary ID.");
+    return;
   }
+
+  showLoader("Verifying Temporary ID...");
+
+  try {
+    // Query your backend API which we already tested and confirmed is working!
+    const res = await fetch(`${API_URL}?action=status&temporaryId=${tempId}`);
+    const data = await res.json();
+
+    if (data.ok) {
+      // Fetch participant count from backend response to calculate amount correctly
+      const participantCount = data.data.participants ? data.data.participants.length : 1;
+      
+      // If status is already confirmed or submitted, handle gracefully or calculate amount due
+      const amount = participantCount * eventConfig.fee;
+
+      // Save to session storage for submission step
+      sessionStorage.setItem('WPF26_TEMP_ID', tempId);
+      sessionStorage.setItem('WPF26_AMT', amount);
+
+      // Reveal payment box and update UI values
+      document.getElementById('paymentDetails').classList.remove('hidden');
+      document.getElementById('payAmount').innerText = amount;
+
+      // Build dynamic UPI link with the ID
+      const upiLink = `upi://pay?pa=${encodeURIComponent(eventConfig.upiId)}&pn=${encodeURIComponent(eventConfig.receiver)}&am=${amount}&cu=INR&tn=${encodeURIComponent(tempId)}`;
+      const upiBtn = document.getElementById('upiAppBtn');
+      if (upiBtn) upiBtn.href = upiLink;
+
+    } else {
+      alert("Please complete registration first or enter a valid ID.");
+    }
+  } catch (e) {
+    console.error(e);
+    alert("Network error while verifying ID.");
+  } finally {
+    hideLoader();
+  }
+}
 
   function compressImage(event) {
     const file = event.target.files[0];
