@@ -353,11 +353,6 @@
           if (upiEl) upiEl.innerText = eventConfig.upiId;
         }
       }).catch(e => console.log("Config load error:", e));
-      
-    const storedId = sessionStorage.getItem('WPF26_TEMP_ID');
-    if (storedId) {
-      document.getElementById('payTempId').value = storedId;
-      document.getElementById('statusTempId').value = storedId;
     }
   };
 
