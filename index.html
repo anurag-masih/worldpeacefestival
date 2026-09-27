@@ -24,7 +24,63 @@
       --success: #10b981;
       --focus-ring: rgba(212, 175, 55, 0.3);
     }
-    
+
+	.guide-container {
+      background-color: var(--card-bg);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #0f172a;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 15px;
+    }
+    .intro-text {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+    .step-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .step-box h3 {
+      margin-top: 0;
+      color: #1e293b;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      border: 1px solid #fde68a;
+    }
+	  
     * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     
     body { 
@@ -180,30 +236,132 @@
   <div class="card" id="notice">
     <div style="text-align: center;">
       <div class="deadline-badge">REGISTRATION CLOSES 02 October 2026, Friday, 8pm</div>
-      <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information <br><span class="hi" style="font-size: 1.2rem; color: var(--text-muted); font-weight: 500;">महत्वपूर्ण सूचना</span></h3>
-    </div>
-    
-    <p class="notice-text">
-      <strong>This meeting is only for  Leaders. There will be NO SPOT REGISTRATION.</strong><br>
-      <span class="hi" style="color: var(--text-muted);">यह मीटिंग केवल प्रथना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। मौके पर कोई पंजीकरण नहीं होगा।</span>
-    </p>
-    <p class="notice-text">
-      <strong>How to register:</strong>First agree to the Important Informtion, then the registration form will open up. YOu will be asked to fill the detail of person filling the form, Just add name and mobile number. Note: You will again have to add your details in the Participants Details. Add all members of your group one by one and fill the form below and submit. You will receive a 5-digit Temporary ID. Make a single payment via your UPI app, enter your Temp ID below, and upload the screenshot. You can check your status back again, Upon verification, you will receive your Confirmation ID.
-    </p>
-	  <span class="hi" style="color: var(--text-muted);"><strong>रजिस्ट्रेशन कैसे करें:</strong>सबसे पहले ज़रूरी जानकारी से सहमत हों, फिर रजिस्ट्रेशन फ़ॉर्म खुल जाएगा। आपसे फ़ॉर्म भरने वाले व्यक्ति की जानकारी मांगी जाएगी; बस नाम और मोबाइल नंबर डालें। ध्यान दें: आपको प्रतिभागियों की जानकारी में भी अपनी जानकारी दोबारा डालनी होगी। अपने ग्रुप के सभी सदस्यों की जानकारी एक-एक करके जोड़ें, नीचे दिया गया फ़ॉर्म भरें और सबमिट करें। आपको 5 अंकों की एक टेम्पररी ID मिलेगी। अपने UPI ऐप से सब का एक बार में पेमेंट करें, नीचे अपनी टेम्पररी ID डालें और उसका स्क्रीनशॉट अपलोड करें। आप बाद में अपना स्टेटस चेक कर सकते हैं; वेरिफिकेशन के बाद आपको कन्फर्मेशन ID मिल जाएगी।</span>
-    </p>
-	<div style="text-align: center; margin: 20px 0;"><iframe width="560" height="315" src="https://www.youtube.com/embed/C-SUyWlQOnI?si=Xwg26e2AnyUB25Yz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-    <p class="notice-text highlight-red">
-      Please carry your Adhaar card. Children below 18 years of age will not be permitted.<br>
-      <span class="hi" style="color: #991b1b; font-weight: 500;">कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी।</span>
-    </p>
-
+      <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information</h3>
+    	
+	<p class="notice-text highlight-red">
+      This meeting is only for  Leaders.  Please carry your Adhaar card. Children below 18 years of age will not be permitted. There will be NO SPOT REGISTRATION.<br>
+      <span class="hi" style="color: #991b1b; font-weight: 500;">यह मीटिंग केवल प्रथना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी। मौके पर कोई पंजीकरण नहीं होगा।</span>
+    </p></div>
+	
+	
     <div class="stats-grid">
       <div class="stat-item"><div class="stat-label">Reporting Time - पहुँचने का समय</div><div class="stat-val">8 Oct — 9:00 AM</div></div>
       <div class="stat-item"><div class="stat-label">Meeting Begins - सभा शुरू होने का समय</div><div class="stat-val">8 Oct — 10:00 AM</div></div>
       <div class="stat-item"><div class="stat-label">Fee/Person - प्रति व्यक्ति शुल्क</div><div class="stat-val">₹300</div></div>
       <div class="stat-item"><div class="stat-label">Age Limit - आयु सीमा</div><div class="stat-val">18+</div></div>
     </div>
+      	
+	<div class="guide-container">
+  <h3 align="center">पंजीकरण निर्देशिका</h3>
+  
+  <div style="text-align: center; margin: 20px auto; width: 100%; max-width: 560px;">
+  <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-light, #e2e8f0); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <iframe src="https://www.youtube.com/embed/C-SUyWlQOnI?si=Xwg26e2AnyUB25Yz" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+	</div>
+	</div>
+
+ 
+    <h3>चरण 1: तैयारी (क्या-क्या तैयार रखना है?)</h3>
+    <p>पंजीकरण फॉर्म भरने से पहले निम्नलिखित जानकारियों को अपने पास तैयार रखें:</p>
+    <ul>
+      <li><strong>समूह के अगुआ का विवरण:</strong> पूरा नाम और व्हाट्सएप नंबर।</li>
+      <li><strong>प्रत्येक प्रतिभागी के लिए यह जानकारी:</strong>
+        <ul>
+          <li>पूरा नाम और आयु</li>
+          <li>पिता या पति का नाम</li>
+          <li>व्हाट्सएप नंबर</li>
+          <li>पहचान पत्र विवरण</li>
+          <li>जिला और प्रदेश</li>
+          <li>कलीसिया (चर्च) का नाम</li>
+          <li>पद</li>
+          <li>सिफारिश करने वाले पास्टर का नाम</li>
+          <li>आने की तारीख और समय</li>
+          <li>जाने की तारीख और समय</li>
+        </ul>
+      </li>
+      <li><strong>भुगतान के लिए:</strong> एक दूसरा फोन या यूपीआई ऐप (यदि राशि ₹2,000 से कम हो तो क्यूआर कोड स्कैन करें, 2000 से ज्यादा हो तो यूपीआई आईडी का उपयोग करें)।</li>
+    </ul>
+
+
+    <h3>चरण 2: फॉर्म कैसे भरें?</h3>
+    <ul>
+      <li><strong>फॉर्म भरें:</strong> एक बार में आप 10 लोगों तक का फॉर्म एक साथ भर सकते हैं। सभी विवरण ध्यानपूर्वक भरें और अंत में घोषणा को स्वीकार करें।</li>
+      <li><strong>अस्थायी आईडी (Temporary ID) प्राप्त करें:</strong> फॉर्म जमा होने के बाद स्क्रीन पर आपको एक अस्थायी आईडी मिलेगी। <br>
+        <div class="note">⚠️ <strong>इसे सुरक्षित रख लें या इसका स्क्रीनशॉट ले लें!</strong> यदि किसी कारण से भुगतान बीच में रुक जाए, तो आपको दोबारा फॉर्म भरने की आवश्यकता नहीं पड़ेगी; आप इसी अस्थायी आईडी से आगे की प्रक्रिया पूरी कर सकते हैं।</div>
+      </li>
+    </ul>
+
+    <h3>चरण 3: भुगतान और स्क्रीनशॉट अपलोड करना</h3>
+    <ul>
+      <li><strong>भुगतान करें:</strong> आपके कुल प्रतिभागियों के आधार पर राशि की गणना करके दिखा देगी। 2000 से कम होने पर क्यूआर कोड स्कैन करके, या 2000 से ज्यादा है यूपीआई आईडी के माध्यम से भुगतान पूरा करें।</li>
+      <li><strong>स्क्रीनशॉट लें:</strong> भुगतान सफल होने के बाद उसका स्क्रीनशॉट अपने फोन में ले लें।</li>
+      <li><strong>स्क्रीनशॉट अपलोड करें:</strong> 
+         यदि आपका वही पृष्ठ खुला है, तो वहीं से स्क्रीनशॉट अपलोड कर दें। यदि पृष्ठ बंद हो गया है, तो "अपलोड क्यूआर / भुगतान" पर जाएं, अपनी अस्थायी आईडी दर्ज करें। फिर नीचे यूटीआर नंबर डालें और अपना स्क्रीनशॉट अपलोड कर दें।</li>
+    </ul>
+
+    <h3>चरण 4: सत्यापन और अंतिम पास</h3>
+    <ul>
+      <li><strong>Status/स्थिति की जाँच करें:</strong> स्क्रीनशॉट अपलोड करने के बाद "स्थिति की जाँच करें" पर जाकर देखें। आपको स्थिति "सत्यापन की प्रतीक्षा में" दिखाई देगी।</li>
+      <li><strong>पुष्टि:</strong> जैसे ही टीम द्वारा भुगतान का सत्यापन किया जाएगा, आपकी स्थिति अपडेट हो जाएगी और आपको स्थायी आईडी मिल जाएगा। इसकी जानकारी आपको व्हाट्सएप पर भी भेज दी जाएगी। पंजीकरण की पुष्टि आप स्टेटस में देख सकते है। </li>
+    </ul>
+
+
+</div>
+	<br>	
+    
+
+
+    <label class="checkbox-container">
+      <input type="checkbox" id="agreeNotice" onchange="toggleForm()">
+      <div class="checkbox-text">
+        I have read and agree to the Important Information.<br>
+        <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैंने महत्वपूर्ण सूचना पढ़ ली है और मैं सहमत हूँ।</span>
+      </div>
+    </label>
+  </div>
+
+  <!-- REGISTRATION FORM -->
+  <div id="registrationForm" class="hidden">
+    
+    <!-- Section 1 -->
+    <div class="card" id="register">
+      <h2 class="section-title">Leader filling the Form <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ फार्म भरने वाले अगुआ का नाम</span></h2>
+      <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">Details of the person completing this registration.</p>
+      
+      <div class="grid">
+        <div class="form-group">
+          <label>Full Name/पूरा नाम *</label>
+          <input type="text" id="regName" placeholder="Name" oninput="validateLive(this, 'text')" required>
+          <span class="error-msg">Name is required.</span>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number/वव्हात्सेप्प नंबर *</label>
+          <input type="tel" id="regMobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" oninput="validateLive(this, 'mobile')" required>
+          <span class="error-msg">Must be exactly 10 digits.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="card">
+      <h2 class="section-title">1. Participant Details <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्रतिभागी विवरण</span></h2>
+      <div id="participantsContainer"></div>
+      <button class="btn btn-outline" onclick="addParticipant()">+ To Add Another Participant click here / अगले प्रतिभागी को जोड़ने के लिए यहाँ दबाएँ</button>
+    </div>
+
+    <!-- Confirmation Section -->
+    <div class="card">
+      <h2 class="section-title">2. Declaration <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ घोषणा</span></h2>
+      
+      <p class="notice-text" style="font-size: 0.95rem;">I confirm the information provided is correct. If there are changes, organizers will be informed. Participation is not due to pressure or inducement.<br>
+      <span class="hi" style="color: var(--text-muted);">मैं पुष्टि करता/करती हूँ कि जानकारी सही है। योजनाओं में बदलाव पर आयोजकों को सूचित किया जाएगा।</span></p>
 
     <label class="checkbox-container">
       <input type="checkbox" id="agreeNotice" onchange="toggleForm()">
