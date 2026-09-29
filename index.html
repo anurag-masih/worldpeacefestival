@@ -258,7 +258,7 @@
     <div class="grid" style="margin-bottom: 25px;">
       <div class="form-group">
         <label>Temporary ID / टेम्पररी आईडी *</label>
-        <input type="text" id="payTempId" placeholder="e.g. A9X2B" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
+        <input type="text" id="payTempId" placeholder="e.g. A9X2B" maxlength="5" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
       </div>
       <div class="form-group" style="display: flex; align-items: flex-end;">
         <button class="btn" style="background: var(--space-dark); padding: 14px;" onclick="loadPaymentDetails()">Verify ID / आईडी जांचें</button>
@@ -282,7 +282,7 @@
       </div>
 
       <div class="form-group" style="margin-top: 20px;">
-        <label>Upload Payment Screenshot / भुगतान का स्क्रीनशॉट अपलोड करें *</label>
+        <label>Upload Payment Screenshot which shows Payment ID/ भुगतान का स्क्रीनशॉट अपलोड करें जहां पर पेमेंट आईडी हो*</label>
         <input type="file" id="payScreenshot" accept="image/*" onchange="compressImage(event)" style="padding: 10px;" required>
         <div id="compressMsg" style="font-size: 0.85rem; color: var(--success); margin-top: 8px; font-weight: 600;"></div>
       </div>
@@ -297,7 +297,7 @@
     <div class="grid">
       <div class="form-group">
         <label>Temporary ID / टेम्पररी आईडी</label>
-        <input type="text" id="statusTempId" placeholder="e.g. A9X2B" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
+        <input type="text" id="statusTempId" placeholder="e.g. A9X2B" maxlength="5" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
       </div>
       <div class="form-group" style="display: flex; align-items: flex-end;">
         <button class="btn" style="background: var(--space-dark); padding: 14px;" onclick="checkStatus()">Check Registration</button>
