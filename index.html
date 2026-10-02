@@ -134,9 +134,20 @@
   <!-- IMPORTANT NOTICE SECTION -->
   <div class="card" id="notice">
     <div style="text-align: center;">
-      <div class="deadline-badge">REGISTRATION CLOSES 02 October 2026, Friday, 8pm</div>
+
       <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information</h3>
-      
+	  <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-top: 4px solid #d4af37; border-radius: 12px; text-align: center; padding: 25px; margin: 20px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+  <h3 style="font-family: 'Cinzel', serif; color: white; margin-bottom: 10px; font-size: 1.2rem;">
+    🎉 REGISTRATION DATE EXTENTED
+  </h3>
+  <div class="deadline-badge">REGISTRATION CLOSES 05 October 2026, Friday, 5pm</div>
+  <div style="font-size: 0.8rem; text-transform: uppercase; color: rgba(255,255,255,0.7); letter-spacing: 1px; margin-bottom: 8px;">
+    Time Remaining / समय शेष
+  </div>
+  <div id="liveCountdown" style="font-size: 1.5rem; font-weight: 700; font-family: monospace; color: #fef08a;">
+    Loading...
+  </div>
+</div>      
       <p class="notice-text highlight-red">
         This meeting is only for Leaders. Please carry your Aadhaar card. Children below 18 years of age will not be permitted. There will be NO SPOT REGISTRATION.<br>
         <span class="hi" style="color: #991b1b; font-weight: 500;">यह मीटिंग केवल प्रार्थना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी। मौके पर कोई पंजीकरण नहीं होगा।</span>
@@ -721,6 +732,34 @@
     } catch (e) { alert("Network Error while checking status."); }
     hideLoader();
   }
+  // Set your target end date and time here (Year-Month-DayTHH:MM:SS)
+  const registrationDeadline = new Date("2026-10-05T17:00:00").getTime();
+
+  function runCountdown() {
+    const now = new Date().getTime();
+    const distance = registrationDeadline - now;
+    const timerElement = document.getElementById('liveCountdown');
+
+    if (!timerElement) return;
+
+    if (distance < 0) {
+      timerElement.innerHTML = "REGISTRATION CLOSED / पंजीकरण बंद हो गया है";
+      timerElement.style.color = "#ef4444";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  // Update every second
+  setInterval(runCountdown, 1000);
+  runCountdown();
+  
 </script>
 </body>
 </html>
