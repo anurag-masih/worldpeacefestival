@@ -723,8 +723,13 @@
             </div>
           `;
         } else {
-          html = `<div style="background: var(--surface-offwhite); padding: 20px; border-radius: 8px; text-align: center;">Current Status: <strong style="text-transform: uppercase;">${data.data.status}</strong></div>`;
-        }
+			html = `
+            <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 25px; border-radius: 12px; text-align: center;">
+              <div style="font-size: 2.5rem; margin-bottom: 10px;">💳</div>
+              <strong style="font-size: 1.2rem; color: #b45309;">Complete your payment and upload the screenshot.<br>कृपया अपना भुगतान पूरा करें और स्क्रीनशॉट अपलोड करें।</strong>
+            </div>
+          `;
+		}
         resBox.innerHTML = html;
       } else {
         alert("Status Error: " + data.error);
