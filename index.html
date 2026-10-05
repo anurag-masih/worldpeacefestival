@@ -217,46 +217,6 @@
     </div>
   </div>
 
-  <!-- PAYMENT & UPLOAD SECTION -->
-  <div class="card" id="payment">
-    <h2 class="section-title">Payment & Upload / भुगतान और अपलोड</h2>
-    
-    <div class="grid" style="margin-bottom: 25px;">
-      <div class="form-group">
-        <label>Temporary ID / टेम्पररी आईडी *</label>
-        <input type="text" id="payTempId" placeholder="e.g. A9X2B" maxlength="5" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
-      </div>
-      <div class="form-group" style="display: flex; align-items: flex-end;">
-        <button class="btn" style="background: var(--space-dark); padding: 14px;" onclick="loadPaymentDetails()">Verify ID / आईडी जांचें</button>
-      </div>
-    </div>
-
-    <div id="paymentDetails" class="hidden">
-      <div class="stats-grid" style="background: #fefce8; border-color: #fef08a; text-align: center;">
-        <div class="stat-item">
-          <div class="stat-label">Amount Due / देय राशि</div>
-          <div class="stat-val" style="color: #b45309;">₹<span id="payAmount">0</span></div>
-        </div>
-        <div class="stat-item" style="margin-top: 10px;">
-          <div class="stat-label">UPI ID / यूपीआई आईडी</div>
-          <div class="stat-val" style="font-size: 1rem; color: var(--space-dark); font-family: monospace;" id="payUpiId">Loading...</div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin: 20px 0;">
-        <img src="upiqr.jpeg" alt="UPI QR Code" width="250" height="250" style="border-radius: 8px; border: 1px solid var(--border-light);">
-      </div>
-
-      <div class="form-group" style="margin-top: 20px;">
-        <label>Upload Payment Screenshot which shows Payment ID/ भुगतान का स्क्रीनशॉट अपलोड करें जहां पर पेमेंट आईडी हो*</label>
-        <input type="file" id="payScreenshot" accept="image/*" onchange="compressImage(event)" style="padding: 10px;" required>
-        <div id="compressMsg" style="font-size: 0.85rem; color: var(--success); margin-top: 8px; font-weight: 600;"></div>
-      </div>
-      
-      <button class="btn" style="background: var(--success);" onclick="submitPayment()">Submit Payment Verification / भुगतान सत्यापित करें</button>
-    </div>
-  </div>
-
   <!-- STATUS SECTION -->
   <div class="card" id="status">
     <h2 class="section-title">Check Status / स्थिति जांचें</h2>
