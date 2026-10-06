@@ -134,20 +134,17 @@
   <!-- IMPORTANT NOTICE SECTION -->
   <div class="card" id="notice">
     <div style="text-align: center;">
-
-      <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information</h3>
 	  <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-top: 4px solid #d4af37; border-radius: 12px; text-align: center; padding: 25px; margin: 20px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-  <h3 style="font-family: 'Cinzel', serif; color: white; margin-bottom: 10px; font-size: 1.2rem;">
-    🎉 REGISTRATION DATE EXTENTED
-  </h3>
-  <div class="deadline-badge">REGISTRATION CLOSES 05 October 2026, Friday, 5pm</div>
+   <div class="deadline-badge">REGISTRATION CLOSES 05 October 2026, Friday, 5pm</div>
   <div style="font-size: 0.8rem; text-transform: uppercase; color: rgba(255,255,255,0.7); letter-spacing: 1px; margin-bottom: 8px;">
     Time Remaining / समय शेष
   </div>
   <div id="liveCountdown" style="font-size: 1.5rem; font-weight: 700; font-family: monospace; color: #fef08a;">
     Loading...
   </div>
-</div>      
+</div>
+      <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information</h3>
+      
       <p class="notice-text highlight-red">
         This meeting is only for Leaders. Please carry your Aadhaar card. Children below 18 years of age will not be permitted. There will be NO SPOT REGISTRATION.<br>
         <span class="hi" style="color: #991b1b; font-weight: 500;">यह मीटिंग केवल प्रार्थना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी। मौके पर कोई पंजीकरण नहीं होगा।</span>
@@ -161,59 +158,43 @@
       <div class="stat-item"><div class="stat-label">Age Limit</div><div class="stat-val">18+</div></div>
     </div>
       
-    <label class="checkbox-container hide-unwanted-fields">
-      <input type="checkbox" id="agreeNotice" onchange="toggleForm()">
-      <div class="checkbox-text">
-        <div class="stat-val">Start Filling the Form / फार्म भरना शुरू करें</div>
-        I have read and agree to the Important Information.<br>
-        <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैंने महत्वपूर्ण सूचना पढ़ ली है और मैं सहमत हूँ।</span>
-      </div>
-    </label>
-  </div>
-
-  <!-- REGISTRATION FORM -->
-  <div id="registrationForm" class="hidden">
+  <!-- PAYMENT & UPLOAD SECTION -->
+  <div class="card" id="payment">
+    <h2 class="section-title">Payment & Upload / भुगतान और अपलोड</h2>
     
-    <div class="card" id="register">
-      <h2 class="section-title">Leader filling the Form <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ फार्म भरने वाले अगुआ का नाम</span></h2>
-      <div class="grid">
-        <div class="form-group">
-          <label>Full Name / पूरा नाम *</label>
-          <input type="text" id="regName" placeholder="Name" oninput="validateLive(this, 'text')" required>
-          <span class="error-msg">Name is required.</span>
-        </div>
-        <div class="form-group">
-          <label>WhatsApp Number / व्हाट्सएप नंबर *</label>
-          <input type="tel" id="regMobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" oninput="validateLive(this, 'mobile')" required>
-          <span class="error-msg">Must be exactly 10 digits.</span>
-        </div>
+    <div class="grid" style="margin-bottom: 25px;">
+      <div class="form-group">
+        <label>Temporary ID / टेम्पररी आईडी *</label>
+        <input type="text" id="payTempId" placeholder="e.g. A9X2B" maxlength="5" style="text-transform: uppercase; font-family: monospace; font-size: 1.2rem; letter-spacing: 3px;" oninput="this.value = this.value.toUpperCase()">
+      </div>
+      <div class="form-group" style="display: flex; align-items: flex-end;">
+        <button class="btn" style="background: var(--space-dark); padding: 14px;" onclick="loadPaymentDetails()">Verify ID / आईडी जांचें</button>
       </div>
     </div>
 
-    <div class="card">
-      <h2 class="section-title">1. Participant Details <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्रतिभागी विवरण</span></h2>
-      <div id="participantsContainer"></div>
-      <button class="btn btn-outline" onclick="addParticipant()">+ Add Participant / प्रतिभागी जोड़ें</button>
-    </div>
+    <div id="paymentDetails" class="hidden">
+      <div class="stats-grid" style="background: #fefce8; border-color: #fef08a; text-align: center;">
+        <div class="stat-item">
+          <div class="stat-label">Amount Due / देय राशि</div>
+          <div class="stat-val" style="color: #b45309;">₹<span id="payAmount">0</span></div>
+        </div>
+        <div class="stat-item" style="margin-top: 10px;">
+          <div class="stat-label">UPI ID / यूपीआई आईडी</div>
+          <div class="stat-val" style="font-size: 1rem; color: var(--space-dark); font-family: monospace;" id="payUpiId">Loading...</div>
+        </div>
+      </div>
 
-    <div class="card">
-      <h2 class="section-title">2. Register <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ रजिस्टर करें </span></h2>
+      <div style="text-align: center; margin: 20px 0;">
+        <img src="upiqr.jpeg" alt="UPI QR Code" width="250" height="250" style="border-radius: 8px; border: 1px solid var(--border-light);">
+      </div>
+
+      <div class="form-group" style="margin-top: 20px;">
+        <label>Upload Payment Screenshot which shows Payment ID/ भुगतान का स्क्रीनशॉट अपलोड करें जहां पर पेमेंट आईडी हो*</label>
+        <input type="file" id="payScreenshot" accept="image/*" onchange="handleFileSelect(event)" style="padding: 10px;" required>
+        <div id="fileMsg" style="font-size: 0.85rem; color: var(--success); margin-top: 8px; font-weight: 600;"></div>
+      </div>
       
-      <label class="checkbox-container">
-        <input type="checkbox" id="agreeTerms" onchange="toggleSubmitBtn()">
-        <div class="checkbox-text">
-          I confirm the information provided is correct. Participation is not due to pressure or inducement. I accept and agree to the above terms and conditions.<br>
-          <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैं नियम और शर्तों को बिना किसी दबाव या बहकावे के बिना स्वीकार करता/करती हूँ और पुष्टि करता/करती हूँ कि दी गयी सारी जानकारी सही है।</span>
-        </div>
-      </label>
-
-      <div class="summary-box">
-        Participants / प्रतिभागी: <span id="summaryCount">0</span><br>
-        <div style="font-size: 0.95rem; margin: 10px 0; color: rgba(255,255,255,0.7);">Fee / Person: ₹<span class="disp-fee">300</span></div>
-        Total Registration Fee: ₹<span id="summaryAmount">0</span>
-      </div>
-
-      <button class="btn" id="btnSubmitReg" onclick="submitRegistration()" disabled>Proceed to Payment / भुगतान करें</button>
+      <button class="btn" id="btnSubmitPayment" style="background: var(--success);" onclick="submitPayment()" disabled>Submit Payment Verification / भुगतान सत्यापित करें</button>
     </div>
   </div>
 
@@ -267,6 +248,7 @@
   let eventConfig = { fee: 300, upiId: '', receiver: 'World Peace Festival' };
   let participantCount = 0;
   let compressedBase64 = null;
+  let extractedUtr = null;
 
   window.onload = () => {
     fetch(API_URL + "?action=config")
@@ -282,9 +264,7 @@
      const storedId = sessionStorage.getItem('WPF26_TEMP_ID');
 
     if (storedId) {
-
       document.getElementById('payTempId').value = storedId;
-
       document.getElementById('statusTempId').value = storedId;
     }
   };
@@ -527,10 +507,6 @@
 
         document.getElementById('paymentDetails').classList.remove('hidden');
         document.getElementById('payAmount').innerText = amount;
-
-        const upiLink = `upi://pay?pa=${encodeURIComponent(eventConfig.upiId)}&pn=${encodeURIComponent(eventConfig.receiver)}&am=${amount}&cu=INR&tn=${encodeURIComponent(tempId)}`;
-        const upiBtn = document.getElementById('upiAppBtn');
-        if (upiBtn) upiBtn.href = upiLink;
       } else {
         alert("Please complete registration first or enter a valid ID.");
       }
@@ -541,32 +517,69 @@
     }
   }
 
-  function compressImage(event) {
+  // Strict OCR & UTR validation gatekeeper
+  async function handleFileSelect(event) {
     const file = event.target.files[0];
-    const input = document.getElementById('payScreenshot');
-    if (!file) { compressedBase64 = null; return; }
+    const msgEl = document.getElementById('fileMsg');
+    const submitBtn = document.getElementById('btnSubmitPayment');
     
-    document.getElementById('compressMsg').innerText = "Compressing securely...";
+    if (!file) { 
+      compressedBase64 = null; 
+      extractedUtr = null;
+      msgEl.innerText = "";
+      submitBtn.disabled = true;
+      return; 
+    }
+    
+    msgEl.style.color = "var(--text-muted)";
+    msgEl.innerText = "Scanning screenshot for 12-digit UTR...";
+    submitBtn.disabled = true;
+    
     const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        let width = img.width, height = img.height;
-        const MAX = 1200;
-        if (width > height && width > MAX) { height *= MAX / width; width = MAX; }
-        else if (height > MAX) { width *= MAX / height; height = MAX; }
-        
-        canvas.width = width; canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff'; 
-        ctx.fillRect(0, 0, width, height);
-        ctx.drawImage(img, 0, 0, width, height);
-        
-        compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
-        document.getElementById('compressMsg').innerHTML = "✓ Ready to upload";
-      };
-      img.src = e.target.result;
+    reader.onload = async (e) => {
+      compressedBase64 = e.target.result;
+      
+      const formData = new FormData();
+      formData.append('base64Image', compressedBase64);
+      formData.append('language', 'eng');
+      formData.append('isOverlayRequired', 'false');
+      formData.append('apikey', 'K88998899888957'); // Free OCR API key
+
+      try {
+        const response = await fetch('https://api.ocr.space/parse/image', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result && result.ParsedResults && result.ParsedResults.length > 0) {
+          const text = result.ParsedResults[0].ParsedText;
+          const utrMatch = text.match(/\b\d{12}\b/);
+          
+          extractedUtr = utrMatch ? utrMatch[0] : null;
+
+          if (extractedUtr) {
+            msgEl.style.color = "var(--success)";
+            msgEl.innerHTML = `✓ UTR Detected & Verified: <strong>${extractedUtr}</strong>`;
+            submitBtn.disabled = false; // Enable submit button only when valid UTR is found
+          } else {
+            msgEl.style.color = "var(--error)";
+            msgEl.innerHTML = "✕ UTR not found. Please upload a clear payment screenshot showing the 12-digit UTR.<br><span class='hi' style='font-size: 0.8rem;'>कृपया 12-अंकों के यूटीआर वाला स्पष्ट स्क्रीनशॉट अपलोड करें।</span>";
+            extractedUtr = null;
+            submitBtn.disabled = true; // Block submission
+          }
+        } else {
+          msgEl.style.color = "var(--error)";
+          msgEl.innerHTML = "✕ Could not read image. Please upload another screenshot.";
+          extractedUtr = null;
+          submitBtn.disabled = true;
+        }
+      } catch (err) {
+        msgEl.style.color = "var(--error)";
+        msgEl.innerHTML = "✕ OCR Scan Failed. Please check your connection and re-upload.";
+        extractedUtr = null;
+        submitBtn.disabled = true;
+      }
     };
     reader.readAsDataURL(file);
   }
@@ -575,12 +588,13 @@
     const tempId = document.getElementById('payTempId').value.trim().toUpperCase();
     if (!tempId) return alert("Temporary ID is required.");
     if (!compressedBase64) return alert("Please upload a payment screenshot.");
+    if (!extractedUtr) return alert("Valid UTR is required to submit.");
 
     showLoader("Uploading verification details...");
     try {
       const res = await fetch(API_URL, { 
         method: 'POST', 
-        body: JSON.stringify({ action: 'submitPayment', temporaryId: tempId, utr: 'MANUAL_CHECK', screenshot: compressedBase64 }),
+        body: JSON.stringify({ action: 'submitPayment', temporaryId: tempId, utr: extractedUtr, screenshot: compressedBase64 }),
         headers: {'Content-Type': 'text/plain;charset=utf-8'}
       });
       const data = await res.json();
@@ -638,13 +652,13 @@
             </div>
           `;
         } else {
-			html = `
+          html = `
             <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 25px; border-radius: 12px; text-align: center;">
               <div style="font-size: 2.5rem; margin-bottom: 10px;">💳</div>
               <strong style="font-size: 1.2rem; color: #b45309;">Complete your payment and upload the screenshot.<br>कृपया अपना भुगतान पूरा करें और स्क्रीनशॉट अपलोड करें।</strong>
             </div>
           `;
-		}
+        }
         resBox.innerHTML = html;
       } else {
         alert("Status Error: " + data.error);
@@ -652,7 +666,7 @@
     } catch (e) { alert("Network Error while checking status."); }
     hideLoader();
   }
-  // Set your target end date and time here (Year-Month-DayTHH:MM:SS)
+  
   const registrationDeadline = new Date("2026-10-05T17:00:00").getTime();
 
   function runCountdown() {
@@ -676,10 +690,8 @@
     timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  // Update every second
   setInterval(runCountdown, 1000);
   runCountdown();
-  
 </script>
 </body>
 </html>
