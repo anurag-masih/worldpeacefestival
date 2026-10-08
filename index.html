@@ -131,25 +131,6 @@
 
 <div class="main-container">
   
-  <!-- IMPORTANT NOTICE SECTION -->
-  <div class="card" id="notice">
-    <div style="text-align: center;">
-	  <div style="background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-top: 4px solid #d4af37; border-radius: 12px; text-align: center; padding: 25px; margin: 20px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-   <div class="deadline-badge">REGISTRATION CLOSES 05 October 2026, Friday, 5pm</div>
-  <div style="font-size: 0.8rem; text-transform: uppercase; color: rgba(255,255,255,0.7); letter-spacing: 1px; margin-bottom: 8px;">
-    Time Remaining / समय शेष
-  </div>
-  <div id="liveCountdown" style="font-size: 1.5rem; font-weight: 700; font-family: monospace; color: #fef08a;">
-    Loading...
-  </div>
-</div>
-      <h3 class="section-title" style="border: none; margin-bottom: 10px;">Important Information</h3>
-      
-      <p class="notice-text highlight-red">
-        This meeting is only for Leaders. Please carry your Aadhaar card. Children below 18 years of age will not be permitted. There will be NO SPOT REGISTRATION.<br>
-        <span class="hi" style="color: #991b1b; font-weight: 500;">यह मीटिंग केवल प्रार्थना भवन के अगुआओं एवं उनके साथी अगुओं के लिए है। कृपया अपना आधार कार्ड साथ लाएं। 18 वर्ष से कम उम्र के बच्चों को अनुमति नहीं दी जाएगी। मौके पर कोई पंजीकरण नहीं होगा।</span>
-      </p>
-    </div>
     
     <div class="stats-grid">
       <div class="stat-item"><div class="stat-label">Reporting Time</div><div class="stat-val">8 Oct — 9:00 AM</div></div>
@@ -158,6 +139,93 @@
       <div class="stat-item"><div class="stat-label">Age Limit</div><div class="stat-val">18+</div></div>
     </div>
       
+    <!-- HINDI GUIDE -->
+    <div class="hi" style="background: #f8fafc; padding: 25px; border-radius: 12px; border: 1px solid var(--border-light);">
+      <h3 style="margin-bottom: 15px; color: var(--space-dark);">पंजीकरण निर्देशिका</h3>
+      
+      <h4 style="margin-top: 15px; color: var(--gold-dark);">चरण 1: तैयारी (क्या-क्या तैयार रखना है?)</h4>
+      <p style="margin-bottom: 10px;">पंजीकरण फॉर्म भरने से पहले निम्नलिखित जानकारियों को अपने पास तैयार रखें:</p>
+      <ul style="padding-left: 20px; margin-bottom: 15px;">
+        <li><strong>समूह के अगुआ का विवरण:</strong> पूरा नाम और व्हाट्सएप नंबर।</li>
+        <li><strong>प्रत्येक प्रतिभागी के लिए यह जानकारी:</strong> पूरा नाम, आयु, पिता/पति का नाम, व्हाट्सएप नंबर, पहचान पत्र विवरण, जिला, प्रदेश, कलीसिया का नाम, पद, सिफारिश करने वाले पास्टर का नाम, तथा आने-जाने की तारीख और समय।</li>
+        <li><strong>भुगतान के लिए:</strong> एक दूसरा फोन या यूपीआई ऐप।</li>
+      </ul>
+
+      <h4 style="margin-top: 15px; color: var(--gold-dark);">चरण 2: फॉर्म कैसे भरें?</h4>
+      <ul style="padding-left: 20px; margin-bottom: 15px;">
+        <li>एक बार में आप 20 लोगों तक का फॉर्म एक साथ भर सकते हैं। सभी विवरण ध्यानपूर्वक भरें और अंत में घोषणा को स्वीकार करें।</li>
+        <li><strong>अस्थायी आईडी प्राप्त करें:</strong> फॉर्म जमा होने के बाद स्क्रीन पर आपको एक अस्थायी आईडी मिलेगी। इसे सुरक्षित रख लें या स्क्रीनशॉट ले लें!</li>
+      </ul>
+
+      <h4 style="margin-top: 15px; color: var(--gold-dark);">चरण 3: भुगतान और स्क्रीनशॉट अपलोड करना</h4>
+      <ul style="padding-left: 20px; margin-bottom: 15px;">
+        <li>प्रणाली आपके कुल प्रतिभागियों के आधार पर राशि की गणना करके दिखा देगी। क्यूआर कोड स्कैन करके या यूपीआई आईडी के माध्यम से भुगतान पूरा करें।</li>
+        <li>भुगतान सफल होने के बाद उसका स्क्रीनशॉट अपलोड करें। (यूटीआर नंबर की आवश्यकता नहीं है)।</li>
+      </ul>
+
+      <h4 style="margin-top: 15px; color: var(--gold-dark);">चरण 4: सत्यापन और अंतिम पास</h4>
+      <ul style="padding-left: 20px;">
+        <li>स्क्रीनशॉट अपलोड करने के बाद "स्थिति की जाँच करें" पर जाकर देखें।</li>
+        <li>जैसे ही टीम द्वारा भुगतान का सत्यापन किया जाएगा, आपको स्थायी पास मिल जाएगा।</li>
+      </ul>
+    </div>
+
+    <label class="checkbox-container">
+      <input type="checkbox" id="agreeNotice" onchange="toggleForm()">
+      <div class="checkbox-text">
+        <div class="stat-val">Start Filling the Form / फार्म भरना शुरू करें</div>
+        I have read and agree to the Important Information.<br>
+        <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैंने महत्वपूर्ण सूचना पढ़ ली है और मैं सहमत हूँ।</span>
+      </div>
+    </label>
+  </div>
+
+  <!-- REGISTRATION FORM -->
+  <div id="registrationForm">
+    
+    <div class="card" id="register">
+      <h2 class="section-title">Leader filling the Form <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ फार्म भरने वाले अगुआ का नाम</span></h2>
+      <div class="grid">
+        <div class="form-group">
+          <label>Full Name / पूरा नाम *</label>
+          <input type="text" id="regName" placeholder="Name" oninput="validateLive(this, 'text')" required>
+          <span class="error-msg">Name is required.</span>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number / व्हाट्सएप नंबर *</label>
+          <input type="tel" id="regMobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" oninput="validateLive(this, 'mobile')" required>
+          <span class="error-msg">Must be exactly 10 digits.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">1. Participant Details <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ प्रतिभागी विवरण</span></h2>
+      <div id="participantsContainer"></div>
+      <button class="btn btn-outline" onclick="addParticipant()">+ Add Participant / प्रतिभागी जोड़ें</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">2. Register <span class="hi" style="font-size: 1.1rem; color: var(--text-muted);">/ रजिस्टर करें </span></h2>
+      
+      <label class="checkbox-container">
+        <input type="checkbox" id="agreeTerms" onchange="toggleSubmitBtn()">
+        <div class="checkbox-text">
+          I confirm the information provided is correct. Participation is not due to pressure or inducement. I accept and agree to the above terms and conditions.<br>
+          <span class="hi" style="color: var(--text-muted); font-weight: 400;">मैं नियम और शर्तों को बिना किसी दबाव या बहकावे के बिना स्वीकार करता/करती हूँ और पुष्टि करता/करती हूँ कि दी गयी सारी जानकारी सही है।</span>
+        </div>
+      </label>
+
+      <div class="summary-box">
+        Participants / प्रतिभागी: <span id="summaryCount">0</span><br>
+        <div style="font-size: 0.95rem; margin: 10px 0; color: rgba(255,255,255,0.7);">Fee / Person: ₹<span class="disp-fee">300</span></div>
+        Total Registration Fee: ₹<span id="summaryAmount">0</span>
+      </div>
+
+      <button class="btn" id="btnSubmitReg" onclick="submitRegistration()" disabled>Proceed to Payment / भुगतान करें</button>
+    </div>
+  </div>
+
   <!-- PAYMENT & UPLOAD SECTION -->
   <div class="card" id="payment">
     <h2 class="section-title">Payment & Upload / भुगतान और अपलोड</h2>
